@@ -1,7 +1,10 @@
 # ninja log v5
-1	140	7343738634812381	build.ninja	daed0c09e93bc80c
-7	377	7343738608402781	CMakeFiles/HomeworkOfDataStructure.dir/week6/BasicStack.cpp.obj	b7770870d6db16d3
-7	53	7343540501948976	CMakeFiles/HomeworkOfDataStructure.dir/week6/BasicList.cpp.obj	99d05d2cb6a14a57
-480	596	7343738610555017	HomeworkOfDataStructure.exe	d627c96f6cea82b2
-2	480	7343738609424594	CMakeFiles/HomeworkOfDataStructure.dir/week6/main.cpp.obj	1f4d569645a790c7
-11	374	7343738608372487	CMakeFiles/HomeworkOfDataStructure.dir/week6/BasicQueue.cpp.obj	c80456575385d932
+1	140	7344581480611274	build.ninja	daed0c09e93bc80c
+9	375	7344573100057380	CMakeFiles/HomeworkOfDataStructure.dir/week6/BasicStack.cpp.obj	d60902e153c6744e
+502	607	7344573102357368	HomeworkOfDataStructure.exe	c722f007e6b8fbd9
+18	501	7344573101315259	CMakeFiles/HomeworkOfDataStructure.dir/week6/main.cpp.obj	ebb0d87b099f9dc0
+14	376	7344573100057380	CMakeFiles/HomeworkOfDataStructure.dir/week6/BasicQueue.cpp.obj	aa02af737d4298b8
+2	517	7344581526112135	CMakeFiles/WEEK6.dir/week6/BasicStack.cpp.obj	bccf4e1863cd48
+7	520	7344581526122133	CMakeFiles/WEEK6.dir/week6/BasicQueue.cpp.obj	c22970f2e08f39ce
+12	627	7344581527208611	CMakeFiles/WEEK6.dir/week6/main.cpp.obj	fc1e7df3637044cf
+628	741	7344581528304230	WEEK6.exe	ae874c0e48789acd

@@ -157,7 +157,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=HomeworkOfDataStructure
+CMAKE_PROJECT_NAME:STATIC=WEEK6
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=C:/Program Files/JetBrains/CLion 2023.3.4/bin/mingw/bin/ranlib.exe
@@ -250,6 +250,15 @@ HomeworkOfDataStructure_IS_TOP_LEVEL:STATIC=ON
 
 //Value Computed by CMake
 HomeworkOfDataStructure_SOURCE_DIR:STATIC=C:/Users/86133/Desktop/数据结构/Homework/HomeworkOfDataStructure
+
+//Value Computed by CMake
+WEEK6_BINARY_DIR:STATIC=C:/Users/86133/Desktop/数据结构/Homework/HomeworkOfDataStructure/cmake-build-debug
+
+//Value Computed by CMake
+WEEK6_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+WEEK6_SOURCE_DIR:STATIC=C:/Users/86133/Desktop/数据结构/Homework/HomeworkOfDataStructure
 
 
 ########################
