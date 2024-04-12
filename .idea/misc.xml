@@ -5,6 +5,7 @@
   </component>
   <component name="CidrRootsConfiguration">
     <excludeRoots>
+      <file path="$PROJECT_DIR$/MyContainer/cmake-build-debug" />
       <file path="$PROJECT_DIR$/cmake-build-debug" />
     </excludeRoots>
   </component>

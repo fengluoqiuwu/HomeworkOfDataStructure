@@ -16,56 +16,56 @@ public:
     //Functions
     //Constructor & Destructor
     BasicArrayList();
-    [[maybe_unused]] explicit BasicArrayList(unsigned long long int inputSize);
-    [[maybe_unused]] BasicArrayList(const T* array,unsigned long long int arraySize);
+    [[maybe_unused]] explicit BasicArrayList(unsigned long long inputSize);
+    [[maybe_unused]] BasicArrayList(const T* array,unsigned long long arraySize);
     [[maybe_unused]] BasicArrayList(BasicArrayList const &basicArrayList);
     ~BasicArrayList();
     //Data Getter & Setter
-    [[nodiscard]] unsigned long long int getSize() const;
-    [[nodiscard]] unsigned long long int getLength() const;
+    [[nodiscard]] unsigned long long getSize() const;
+    [[nodiscard]] unsigned long long getLength() const;
     //Main
         //Maintain
-    bool isEmpty() const;//TODO
-    T& get() const;//TODO
-    unsigned long long int getIndex() const;//TODO
-    unsigned long long int find(const T& t) const;//TODO Please reload the == operator before using the function
+    bool isEmpty() const;
+    T& get(unsigned long long index) const;
+    unsigned long long getIndex(T& t) const;
+    unsigned long long find(const T& t) const;//TODO Please reload the == operator before using the function
     BasicArrayList<T>& subList(
-            const long long int beginIndex,
-            const long long int endIndex
+            const unsigned long long beginIndex,
+            const unsigned long long endIndex
             ) const;//TODO [beginIndex,endIndex)
         //Modify
     void clear();//TODO
     void add(const T& t);//TODO
-    void addAll(const T* array,unsigned long long int arraySize);//TODO
-    void insert(const long long int index,const T& t);//TODO
-    void insert(const long long int index,const T& t,const long long int amount);
+    void addAll(const T* array,unsigned long long arraySize);//TODO
+    void insert(const unsigned long long index,const T& t);//TODO
+    void insert(const unsigned long long index,const T& t,const unsigned long long amount);
     void insert(
-            const long long int index,
+            const unsigned long long index,
             BasicArrayList const &basicArrayList
             );//TODO
     void insert(
-            const long long int index,
+            const unsigned long long index,
             const T* array,
-            unsigned long long int arraySize
+            unsigned long long arraySize
     );//TODO
-    void erase(unsigned long long int index);//TODO
+    void erase(unsigned long long index);//TODO
     void remove(T& t);//TODO
-    void reSize(unsigned long long int inputSize);//TODO
+    void reSize(unsigned long long inputSize);//TODO
 private:
     //Data
     T* bottom;//指向索引-1
-    unsigned long long int size;
-    unsigned long long int length;
+    unsigned long long size;
+    unsigned long long length;
     //Functions
         //Data Getter & Setter
-    [[nodiscard]] unsigned long long int getBottom() const;
-    void setSize(unsigned long long int inputSize);
-    void setLength(unsigned long long int inputLength);
-    void setButton(T* inputBottom);//A very dangerous function!!!
+    [[nodiscard]] unsigned long long getBottom() const;
+    void setSize(unsigned long long inputSize);
+    void setLength(unsigned long long inputLength);
+    void setBottom(T* inputBottom);//A very dangerous function!!!
     //Main
         //Maintain
-    void checkData();//TODO
-    void isFull();//TODO
+    void checkData();
+    bool isFull();
         //Modify
 };
 

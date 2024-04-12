@@ -19,14 +19,14 @@ BasicArrayList<T>::BasicArrayList() {
 }
 
 template<typename T>
-[[maybe_unused]] BasicArrayList<T>::BasicArrayList(unsigned long long int inputSize) {
+[[maybe_unused]] BasicArrayList<T>::BasicArrayList(unsigned long long inputSize) {
     size=inputSize;
     length=0;
     bottom=new T[size];
 }
 
 template<typename T>
-[[maybe_unused]] BasicArrayList<T>::BasicArrayList(const T* array, unsigned long long int arraySize) {
+[[maybe_unused]] BasicArrayList<T>::BasicArrayList(const T* array, unsigned long long arraySize) {
     size=arraySize;
     length=0;
     bottom=new T[size];
@@ -55,12 +55,12 @@ BasicArrayList<T>::~BasicArrayList() {
         //Data Getter & Setter
 
 template<typename T>
-[[nodiscard]] unsigned long long int BasicArrayList<T>::getSize() const {
+[[nodiscard]] unsigned long long BasicArrayList<T>::getSize() const {
     return size;
 }
 
 template<typename T>
-[[nodiscard]] unsigned long long int BasicArrayList<T>::getLength() const {
+[[nodiscard]] unsigned long long BasicArrayList<T>::getLength() const {
     return length;
 }
 
@@ -69,26 +69,39 @@ template<typename T>
 
 template<typename T>
 bool BasicArrayList<T>::isEmpty() const {
-    return false;
+    return (length==0);
 }
 
 template<typename T>
-T &BasicArrayList<T>::get() const {
-    return nullptr;
+T &BasicArrayList<T>::get(unsigned long long index) const {
+    checkData();
+    if(index>=length||index<0){
+        throw "BasicArrayList : function get() receive a invalid index!";
+    }
+
+    return *(bottom+index+1);
 }
 
 template<typename T>
-unsigned long long int BasicArrayList<T>::getIndex() const {
+unsigned long long BasicArrayList<T>::getIndex(T& t) const {
+    T* comparator=bottom;
+    for(int i=0;i<length;++i){
+        comparator++;
+        if(&t==comparator){
+            return i;
+        }
+    }
+
+    return 18446744073709551615ULL;
+}
+
+template<typename T>
+unsigned long long BasicArrayList<T>::find(const T &t) const {
     return 0;
 }
 
 template<typename T>
-unsigned long long int BasicArrayList<T>::find(const T &t) const {
-    return 0;
-}
-
-template<typename T>
-BasicArrayList<T> &BasicArrayList<T>::subList(const long long int beginIndex, const long long int endIndex) const {
+BasicArrayList<T> &BasicArrayList<T>::subList(const unsigned long long beginIndex, const unsigned long long endIndex) const {
     return nullptr;
 }
 
@@ -105,32 +118,32 @@ void BasicArrayList<T>::add(const T &t) {
 }
 
 template<typename T>
-void BasicArrayList<T>::addAll(const T *array, unsigned long long int arraySize) {
+void BasicArrayList<T>::addAll(const T *array, unsigned long long arraySize) {
 
 }
 
 template<typename T>
-void BasicArrayList<T>::insert(const long long int index, const T &t) {
+void BasicArrayList<T>::insert(const unsigned long long index, const T &t) {
 
 }
 
 template<typename T>
-void BasicArrayList<T>::insert(const long long int index, const T &t, const long long int amount) {
+void BasicArrayList<T>::insert(const unsigned long long index, const T &t, const unsigned long long amount) {
 
 }
 
 template<typename T>
-void BasicArrayList<T>::insert(const long long int index, const BasicArrayList &basicArrayList) {
+void BasicArrayList<T>::insert(const unsigned long long index, const BasicArrayList &basicArrayList) {
 
 }
 
 template<typename T>
-void BasicArrayList<T>::insert(const long long int index, const T *array, unsigned long long int arraySize) {
+void BasicArrayList<T>::insert(const unsigned long long index, const T *array, unsigned long long arraySize) {
 
 }
 
 template<typename T>
-void BasicArrayList<T>::erase(unsigned long long int index) {
+void BasicArrayList<T>::erase(unsigned long long index) {
 
 }
 
@@ -140,7 +153,7 @@ void BasicArrayList<T>::remove(T &t) {
 }
 
 template<typename T>
-void BasicArrayList<T>::reSize(unsigned long long int inputSize) {
+void BasicArrayList<T>::reSize(unsigned long long inputSize) {
 
 }
 
@@ -149,22 +162,22 @@ void BasicArrayList<T>::reSize(unsigned long long int inputSize) {
         //Data Getter & Setter
 
 template<typename T>
-[[nodiscard]] unsigned long long int BasicArrayList<T>::getBottom() const {
+[[nodiscard]] unsigned long long BasicArrayList<T>::getBottom() const {
     return bottom;
 }
 
 template<typename T>
-void BasicArrayList<T>::setSize(unsigned long long int inputSize) {
+void BasicArrayList<T>::setSize(unsigned long long inputSize) {
     size=inputSize;
 }
 
 template<typename T>
-void BasicArrayList<T>::setLength(unsigned long long int inputLength) {
+void BasicArrayList<T>::setLength(unsigned long long inputLength) {
     length=inputLength;
 }
 
 template<typename T>
-void BasicArrayList<T>::setButton(T* inputBottom) {
+void BasicArrayList<T>::setBottom(T* inputBottom) {
     bottom=inputBottom;
 }
 
@@ -173,12 +186,17 @@ void BasicArrayList<T>::setButton(T* inputBottom) {
 
 template<typename T>
 void BasicArrayList<T>::checkData() {
-
+    if(bottom== nullptr){
+        throw "BasicArrayList : bottom can't be nullptr!";
+    }
+    if(size<length){
+        throw "BasicArrayList : length is bigger than size!";
+    }
 }
 
 template<typename T>
-void BasicArrayList<T>::isFull() {
-
+bool BasicArrayList<T>::isFull() {
+    return (length==size);
 }
 
         //Modify
