@@ -31,7 +31,7 @@ template<typename T>
     length=0;
     bottom=new T[size];
 
-    std::copy(array,array+size-1,bottom);
+    std::copy(array,array+size,bottom);
 }
 
 template<typename T>
@@ -84,8 +84,9 @@ T &BasicArrayList<T>::get(unsigned long long index) const {
 
 template<typename T>
 unsigned long long BasicArrayList<T>::getIndex(T& t) const {
+    checkData();
     T* comparator=bottom;
-    for(int i=0;i<length;++i){
+    for(unsigned long long i=0;i<length;++i){
         comparator++;
         if(&t==comparator){
             return i;
@@ -97,64 +98,171 @@ unsigned long long BasicArrayList<T>::getIndex(T& t) const {
 
 template<typename T>
 unsigned long long BasicArrayList<T>::find(const T &t) const {
-    return 0;
+    checkData();
+
+    T* comparator=bottom;
+    for(unsigned long long i=0;i<length;++i){
+        comparator++;
+        if(t==(*comparator)){
+            return i;
+        }
+    }
+
+    return 18446744073709551615ULL;
 }
 
 template<typename T>
-BasicArrayList<T> &BasicArrayList<T>::subList(const unsigned long long beginIndex, const unsigned long long endIndex) const {
-    return nullptr;
+BasicArrayList<T> &BasicArrayList<T>::subList(
+        const unsigned long long beginIndex,
+        const unsigned long long endIndex
+        ) const {
+    if(endIndex>length){
+        throw "BasicArrayList : function subList receive a too large endIndex!";
+    }
+    if(beginIndex>=endIndex){
+        return BasicArrayList<T>();
+    }
+
+    T * subArray=new T[endIndex-beginIndex];
+    std::copy(bottom+beginIndex+1,bottom+endIndex+1,subArray);
+    auto* subArrayList=new BasicArrayList<T>(size);
+    subArrayList->setBottom(subArray-1);
+    subArrayList->setLength(endIndex-beginIndex);
+
+    return *subArrayList;
 }
 
         //Modify
 
 template<typename T>
 void BasicArrayList<T>::clear() {
-
+    length=0;
 }
 
 template<typename T>
 void BasicArrayList<T>::add(const T &t) {
+    checkData();
 
+    if(isFull()){
+        expand();
+    }
+
+    length++;
+    *(bottom+length)=t;
 }
 
 template<typename T>
 void BasicArrayList<T>::addAll(const T *array, unsigned long long arraySize) {
+    checkData();
 
+    if(length+arraySize>size){
+        reSize(length+arraySize);
+    }
+
+    std::copy(array,array+arraySize,bottom+length+1);
+    length+=arraySize;
 }
 
 template<typename T>
 void BasicArrayList<T>::insert(const unsigned long long index, const T &t) {
+    checkData();
 
+    if(isFull()){
+        expand();
+    }
+
+    T* pointer=bottom+index;
+    for(unsigned long long i=index;i<=length;i++){
+        pointer++;
+        *(pointer+1)=*pointer;
+    }
+    *(bottom+index+1)=t;
+    length++;
 }
 
 template<typename T>
 void BasicArrayList<T>::insert(const unsigned long long index, const T &t, const unsigned long long amount) {
+    checkData();
 
+    if(length+amount>size){
+        reSize(length+amount);
+    }
+
+    T* pointer=bottom+index;
+    for(unsigned long long i=index;i<=length;i++){
+        pointer++;
+        *(pointer+amount)=*pointer;
+    }
+    for(unsigned long long i=1;i<=amount;i++){
+        *(bottom+index+i)=t;
+    }
+
+    length+=amount;
 }
 
 template<typename T>
 void BasicArrayList<T>::insert(const unsigned long long index, const BasicArrayList &basicArrayList) {
-
+    insert(index,basicArrayList.getBottom()+1,basicArrayList.getLength());
 }
 
 template<typename T>
 void BasicArrayList<T>::insert(const unsigned long long index, const T *array, unsigned long long arraySize) {
+    checkData();
 
+    if(length+arraySize>size){
+        reSize(length+arraySize);
+    }
+
+    T* pointer=bottom+index;
+    for(unsigned long long i=index;i<=length;i++){
+        pointer++;
+        *(pointer+arraySize)=*pointer;
+    }
+    std::copy(array,array+arraySize,bottom+index+1);
+
+    length+=arraySize;
 }
 
 template<typename T>
 void BasicArrayList<T>::erase(unsigned long long index) {
+    checkData();
 
+    if(index>=length){
+        throw "BasicArrayList : function erase receive a too large index!";
+    }
+
+    T* pointer=bottom+index;
+    for(unsigned long long i=index;i<=length;i++){
+        *(pointer)=*(pointer+1);
+        pointer++;
+    }
+    length--;
 }
 
 template<typename T>
 void BasicArrayList<T>::remove(T &t) {
+    T* pointer=bottom+1;
+    T* end=bottom+length;
+    while(true){
+        if(pointer==end){
+            break;
+        }
 
+        if(*(pointer)==t){
+            erase(pointer-bottom);
+            continue;
+        }
+
+        pointer++;
+    }
 }
 
 template<typename T>
 void BasicArrayList<T>::reSize(unsigned long long inputSize) {
-
+    size=inputSize;
+    if(length>size){
+        length=size;
+    }
 }
 
 //private
@@ -197,6 +305,13 @@ void BasicArrayList<T>::checkData() {
 template<typename T>
 bool BasicArrayList<T>::isFull() {
     return (length==size);
+}
+
+template<typename T>
+void BasicArrayList<T>::expand() {
+    if(size>=15372286728091293012ULL){
+        throw "BasicArrayList : function expand couldn't work!The length is larger than 2^64-1;";
+    }
 }
 
         //Modify

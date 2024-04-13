@@ -28,29 +28,33 @@ public:
     bool isEmpty() const;
     T& get(unsigned long long index) const;
     unsigned long long getIndex(T& t) const;
-    unsigned long long find(const T& t) const;//TODO Please reload the == operator before using the function
+    unsigned long long find(const T& t) const;//Please reload the == operator before using the function
     BasicArrayList<T>& subList(
             const unsigned long long beginIndex,
             const unsigned long long endIndex
-            ) const;//TODO [beginIndex,endIndex)
+            ) const;//[beginIndex,endIndex)
         //Modify
-    void clear();//TODO
-    void add(const T& t);//TODO
-    void addAll(const T* array,unsigned long long arraySize);//TODO
-    void insert(const unsigned long long index,const T& t);//TODO
-    void insert(const unsigned long long index,const T& t,const unsigned long long amount);
+    void clear();
+    void add(const T& t);
+    void addAll(const T* array,unsigned long long arraySize);
+    void insert(const unsigned long long index,const T& t);
+    void insert(
+            const unsigned long long index,
+            const T& t,
+            const unsigned long long amount
+            );
     void insert(
             const unsigned long long index,
             BasicArrayList const &basicArrayList
-            );//TODO
+            );
     void insert(
             const unsigned long long index,
             const T* array,
             unsigned long long arraySize
-    );//TODO
-    void erase(unsigned long long index);//TODO
-    void remove(T& t);//TODO
-    void reSize(unsigned long long inputSize);//TODO
+    );
+    void erase(unsigned long long index);
+    void remove(T& t);
+    void reSize(unsigned long long inputSize);
 private:
     //Data
     T* bottom;//指向索引-1
@@ -66,6 +70,7 @@ private:
         //Maintain
     void checkData();
     bool isFull();
+    void expand();
         //Modify
 };
 
