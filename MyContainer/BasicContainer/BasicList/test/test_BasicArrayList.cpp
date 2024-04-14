@@ -40,24 +40,24 @@ void testGetterAndSetter();
 
 void testConstructorAndDestructor();
 
-int main(int argc, char* argv[]) {
+int main() {
     testConstructorAndDestructor();
     testGetterAndSetter();
-//    testPrivateFunction();
-//    testIsEmpty();
-//    testGet();
-//    testGetIndex();
-//    testFind();
-//    testSubList();
-//    testClear();
-//    testAdd();
-//    testAddAll();
-//    testInsert();
-//    testErase();
-//    testRemove();
-//    testResize();
-//    testToString();
-//    testShow();
+    testPrivateFunction();
+    testIsEmpty();
+    testGet();
+    testGetIndex();
+    testFind();
+    testSubList();
+    testClear();
+    testAdd();
+    testAddAll();
+    testInsert();
+    testErase();
+    testRemove();
+    testResize();
+    testToString();
+    testShow();
     return 0;
 }
 
@@ -77,7 +77,7 @@ void testConstructorAndDestructor() {
     c.show();
     std::cout<<std::endl;
 
-    BasicArrayList<int>d(c);
+    const BasicArrayList<int>&d(c);
     d.show();
     std::cout<<std::endl;
 }
@@ -109,61 +109,241 @@ void testGetterAndSetter() {
 }
 
 void testPrivateFunction() {
+    std::cout<<"###Test Private Function###"<<std::endl;
+    BasicArrayList<int>a;
 
+    a.add(1);
+    a.add(2);
+    a.add(3);
+
+    a.show();
+    std::cout<<std::endl;
+
+    std::cout<<"check data:"<<std::endl;
+    std::cout<<"isFull:"<<a.isFull()<<std::endl;
+    a.reSize(3);
+    std::cout<<"isFull:"<<a.isFull()<<std::endl;
+    std::cout<<std::endl;
+
+    a.show();
+    std::cout<<std::endl;
+
+    a.expand();
+    a.show();
+    std::cout<<std::endl;
 }
 
 void testIsEmpty() {
+    std::cout<<"###Test Is Empty###"<<std::endl;
+    BasicArrayList<int>a;
 
+    a.add(1);
+    a.add(2);
+    a.add(3);
+    a.show();
+    std::cout<<std::endl;
+
+    std::cout<<"IsEmpty:"<<a.isEmpty()<<std::endl;
+    a.clear();
+    std::cout<<"IsEmpty:"<<a.isEmpty()<<std::endl;
 }
 
 void testGet() {
+    std::cout<<"###Test Get###"<<std::endl;
+    BasicArrayList<int>a;
 
+    a.add(1);
+    a.add(2);
+    a.add(3);
+    a.show();
+    std::cout<<std::endl;
+
+    std::cout<<"Get:"<<a.get(1)<<std::endl;
+    std::cout<<"Get:"<<a.get(2)<<std::endl;
+//    std::cout<<"Get:"<<a.get(3)<<std::endl;
+
+    std::cout<<std::endl;
 }
 
 void testGetIndex() {
+    std::cout<<"###Test Get Index###"<<std::endl;
+    BasicArrayList<int>a;
 
+    a.add(1);
+    a.add(2);
+    a.add(3);
+    a.show();
+    std::cout<<std::endl;
+
+    std::cout<<"GetIndex:"<<a.getIndex(a.get(1))<<std::endl;
+
+    std::cout<<std::endl;
 }
 
 void testFind() {
+    std::cout<<"###Test Find###"<<std::endl;
+    BasicArrayList<int>a;
 
+    a.add(1);
+    a.add(2);
+    a.add(3);
+    a.show();
+    std::cout<<std::endl;
+
+    std::cout<<"GetIndex:"<<a.find(a.get(1))<<std::endl;
+
+    std::cout<<std::endl;
 }
 
 void testSubList() {
+    std::cout<<"###Test SubList###"<<std::endl;
+    BasicArrayList<int>a;
 
+    a.add(1);
+    a.add(2);
+    a.add(3);
+    a.show();
+    std::cout<<std::endl;
+
+    BasicArrayList<int> a1=a.subList(0,3);
+    a1.show();
+    std::cout<<std::endl;
 }
 
 void testClear() {
+    std::cout<<"###Test Clear###"<<std::endl;
+    BasicArrayList<int>a;
 
+    a.add(1);
+    a.add(2);
+    a.add(3);
+    a.show();
+    std::cout<<std::endl;
+
+    a.clear();
+    a.show();
+    std::cout<<std::endl;
 }
 
 void testAdd() {
+    std::cout<<"###Test Add###"<<std::endl;
+    BasicArrayList<int>a;
 
+    a.add(1);
+    a.add(2);
+    a.add(3);
+    a.show();
+    std::cout<<std::endl;
 }
 
 void testAddAll() {
+    std::cout<<"###Test AddAll###"<<std::endl;
+    BasicArrayList<int>a;
 
+    a.add(1);
+    a.add(2);
+    a.add(3);
+    a.show();
+    std::cout<<std::endl;
+
+    int arr[]={1,2,3};
+    a.addAll(arr,3);
+
+    a.show();
+    std::cout<<std::endl;
 }
 
 void testInsert() {
+    std::cout<<"###Test Insert###"<<std::endl;
+    BasicArrayList<int>a;
 
+    a.add(1);
+    a.add(2);
+    a.add(3);
+    a.show();
+    std::cout<<std::endl;
+
+    a.insert(0,1);
+    a.show();
+    std::cout<<std::endl;
+
+    a.insert(0,1,10);
+    a.show();
+    std::cout<<std::endl;
+
+    a.insert(0,a);
+    a.show();
+    std::cout<<std::endl;
+
+    int arr[]={1,2,3};
+    a.insert(1,arr,3);
+    a.show();
+    std::cout<<std::endl;
 }
 
 void testErase() {
+    std::cout<<"###Test Erase###"<<std::endl;
+    BasicArrayList<int>a;
 
+    a.add(1);
+    a.add(2);
+    a.add(3);
+    a.show();
+    std::cout<<std::endl;
+
+    a.erase(1);
+    a.show();
+    std::cout<<std::endl;
 }
 
 void testRemove() {
+    std::cout<<"###Test Remove###"<<std::endl;
+    BasicArrayList<int>a;
 
+    a.add(1);
+    a.add(2);
+    a.add(3);
+    a.show();
+    std::cout<<std::endl;
+
+    a.remove(a.get(1));
+    a.show();
+    std::cout<<std::endl;
 }
 
 void testResize() {
+    std::cout<<"###Test ReSize###"<<std::endl;
+    BasicArrayList<int>a;
 
+    a.add(1);
+    a.add(2);
+    a.add(3);
+    a.show();
+    std::cout<<std::endl;
+
+    a.reSize(1);
+    a.show();
+    std::cout<<std::endl;
 }
 
 void testToString() {
+    std::cout<<"###Test ToString###"<<std::endl;
+    BasicArrayList<int>a;
 
+    a.add(1);
+    a.add(2);
+    a.add(3);
+    std::cout<<a.toString()<<std::endl;
+    std::cout<<std::endl;
 }
 
 void testShow() {
+    std::cout<<"###Test Show###"<<std::endl;
+    BasicArrayList<int>a;
 
+    a.add(1);
+    a.add(2);
+    a.add(3);
+    a.show();
+    std::cout<<std::endl;
 }
