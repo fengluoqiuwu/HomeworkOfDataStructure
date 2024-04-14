@@ -3,6 +3,8 @@
 //
 
 #include <algorithm>
+#include <sstream>
+#include <iostream>
 #include "BasicArrayList.h"
 
 
@@ -15,40 +17,40 @@ template<typename T>
 BasicArrayList<T>::BasicArrayList() {
     size=LIST_INIT_SIZE;
     length=0;
-    bottom=new T[size];
+    bottom=(new T[size])-1;
 }
 
 template<typename T>
 [[maybe_unused]] BasicArrayList<T>::BasicArrayList(unsigned long long inputSize) {
     size=inputSize;
     length=0;
-    bottom=new T[size];
+    bottom=(new T[size])-1;
 }
 
 template<typename T>
 [[maybe_unused]] BasicArrayList<T>::BasicArrayList(const T* array, unsigned long long arraySize) {
     size=arraySize;
-    length=0;
-    bottom=new T[size];
+    length=arraySize;
+    bottom=(new T[size])-1;
 
-    std::copy(array,array+size,bottom);
+    std::copy(array,array+size,bottom+1);
 }
 
 template<typename T>
 [[maybe_unused]] BasicArrayList<T>::BasicArrayList(const BasicArrayList &basicArrayList) {
     size=basicArrayList.getSize();
-    length=0;
-    bottom=new T[size];
+    length=basicArrayList.getLength();
+    bottom=(new T[size])-1;
 
     std::copy(basicArrayList.getBottom()+1,
-              basicArrayList.getBottom()+basicArrayList.getSize(),
-              bottom
+              basicArrayList.getBottom()+basicArrayList.getSize()+1,
+              bottom+1
               );
 }
 
 template<typename T>
 BasicArrayList<T>::~BasicArrayList() {
-    delete[] bottom;
+    delete[] (bottom+1);
     bottom = nullptr;
 }
 
@@ -130,6 +132,30 @@ BasicArrayList<T> &BasicArrayList<T>::subList(
     subArrayList->setLength(endIndex-beginIndex);
 
     return *subArrayList;
+}
+
+template<typename T>
+std::string BasicArrayList<T>::toString() const{
+    std::stringstream ss;
+    ss<<'[';
+    for(int i=1;i<=length;i++){
+        ss<<*(bottom+i);
+        if(i!=length){
+            ss<<',';
+        }
+    }
+    ss<<']';
+
+    return ss.str();
+}
+
+template<typename T>
+void BasicArrayList<T>::show() const{
+    std::cout<<"BasicArrayList"<<std::endl;
+    std::cout<<toString()<<std::endl;
+    std::cout<<"bottom:"<<bottom<<std::endl;
+    std::cout<<"size:"<<size<<std::endl;
+    std::cout<<"length:"<<length<<std::endl;
 }
 
         //Modify
@@ -259,10 +285,16 @@ void BasicArrayList<T>::remove(T &t) {
 
 template<typename T>
 void BasicArrayList<T>::reSize(unsigned long long inputSize) {
-    size=inputSize;
-    if(length>size){
-        length=size;
+    T* newBottom=(new T[inputSize])-1;
+    if(length>inputSize){
+        length=inputSize;
     }
+
+    std::copy(bottom+1,bottom+length+1,newBottom+1);
+
+    delete [] bottom;
+    bottom=newBottom;
+
 }
 
 //private
@@ -270,7 +302,7 @@ void BasicArrayList<T>::reSize(unsigned long long inputSize) {
         //Data Getter & Setter
 
 template<typename T>
-[[nodiscard]] unsigned long long BasicArrayList<T>::getBottom() const {
+[[nodiscard]] T* BasicArrayList<T>::getBottom() const {
     return bottom;
 }
 
@@ -312,6 +344,8 @@ void BasicArrayList<T>::expand() {
     if(size>=15372286728091293012ULL){
         throw "BasicArrayList : function expand couldn't work!The length is larger than 2^64-1;";
     }
+
+    reSize(size*1.2);
 }
 
         //Modify

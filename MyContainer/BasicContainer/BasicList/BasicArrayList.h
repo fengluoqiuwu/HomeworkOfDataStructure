@@ -5,6 +5,8 @@
 #ifndef MY_CONTAINER_BASIC_ARRAY_LIST_H
 #define MY_CONTAINER_BASIC_ARRAY_LIST_H
 
+#include <string>
+
 const unsigned int LIST_INIT_SIZE=100;
 
 //Read me before using it!!!
@@ -33,6 +35,8 @@ public:
             const unsigned long long beginIndex,
             const unsigned long long endIndex
             ) const;//[beginIndex,endIndex)
+    std::string toString() const;
+    void show() const;
         //Modify
     void clear();
     void add(const T& t);
@@ -55,14 +59,14 @@ public:
     void erase(unsigned long long index);
     void remove(T& t);
     void reSize(unsigned long long inputSize);
-private:
+public:
     //Data
     T* bottom;//指向索引-1
     unsigned long long size;
     unsigned long long length;
     //Functions
         //Data Getter & Setter
-    [[nodiscard]] unsigned long long getBottom() const;
+    [[nodiscard]] T* getBottom() const;
     void setSize(unsigned long long inputSize);
     void setLength(unsigned long long inputLength);
     void setBottom(T* inputBottom);//A very dangerous function!!!
