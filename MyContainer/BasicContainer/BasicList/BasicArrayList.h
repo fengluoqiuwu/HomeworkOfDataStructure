@@ -13,6 +13,7 @@ const unsigned int LIST_INIT_SIZE = 100;
 //Read me before using it!!!
 //Typename T's = operator must be reloaded
 //Typename T's == operator should be reloaded if you want to use function find
+//Typename T's > & < operator should be reloaded if you want to use function sort
 template<typename T>
 class BasicArrayList {
 public:
@@ -84,9 +85,11 @@ public:
 
     void reSize(unsigned long long inputSize);
 
+    void sort();//Ascending sorting,Please reload the > & < operator before using the function
+
 private:
     //Data
-    T *bottom;//指向索引-1
+    T *bottom;//指向索引0
     unsigned long long size;
     unsigned long long length;
 

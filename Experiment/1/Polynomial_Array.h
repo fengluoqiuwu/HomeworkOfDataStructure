@@ -4,8 +4,8 @@
 
 #include "../../MyContainer/BasicContainer/BasicList/BasicArrayList.cpp"
 
-#ifndef DATA_STRUCTURE_POLYNOMIAL_H
-#define DATA_STRUCTURE_POLYNOMIAL_H
+#ifndef DATA_STRUCTURE_POLYNOMIAL_ARRAY_H
+#define DATA_STRUCTURE_POLYNOMIAL_ARRAY_H
 
 
 class Polynomial_Array {
@@ -63,4 +63,4 @@ private:
 };
 
 
-#endif //DATA_STRUCTURE_POLYNOMIAL_H
+#endif //DATA_STRUCTURE_POLYNOMIAL_ARRAY_H

@@ -5,4 +5,6 @@ set(CMAKE_CXX_STANDARD 26)
 
 add_executable(EXPERIMENT_1
         test.cpp
+        ../Polynomial_Node.cpp
+        ../Polynomial_Node.h
 )

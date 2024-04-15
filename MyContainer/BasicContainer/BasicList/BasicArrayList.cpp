@@ -318,6 +318,11 @@ void BasicArrayList<T>::reSize(unsigned long long inputSize) {
 
 }
 
+template<typename T>
+void BasicArrayList<T>::sort() {
+    std::sort(bottom,bottom+length);
+}
+
 //private
 //Functions
 //Data Getter & Setter

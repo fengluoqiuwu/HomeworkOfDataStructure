@@ -42,6 +42,8 @@ void testGetterAndSetter();
 
 void testConstructorAndDestructor();
 
+void testSort();
+
 int main() {
     testConstructorAndDestructor();
 //    testGetterAndSetter();
@@ -61,6 +63,7 @@ int main() {
     testToString();
     testShow();
     testOperator();
+    testSort();
     return 0;
 }
 
@@ -364,5 +367,21 @@ void testOperator(){
 
     BasicArrayList<int>a1=a;
     a1.show();
+    std::cout<<std::endl;
+}
+
+void testSort() {
+    std::cout<<"###Test Sort###"<<std::endl;
+    BasicArrayList<int>a;
+
+    a.add(3);
+    a.add(2);
+    a.add(2);
+    a.add(1);
+    a.show();
+    std::cout<<std::endl;
+
+    a.sort();
+    a.show();
     std::cout<<std::endl;
 }
