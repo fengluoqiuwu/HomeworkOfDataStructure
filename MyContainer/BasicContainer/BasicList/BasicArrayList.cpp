@@ -10,6 +10,23 @@
 
 
 //public
+//Operator
+
+template<typename T>
+BasicArrayList<T> &BasicArrayList<T>::operator=(const BasicArrayList<T> &basicArrayList) {
+    if(this!=&basicArrayList){
+        size = basicArrayList.getSize();
+        length = basicArrayList.getLength();
+        bottom = new T[size];
+
+        std::copy(basicArrayList.getBottom(),
+                  basicArrayList.getBottom() + basicArrayList.getSize(),
+                  bottom
+        );
+    }
+    return *this;
+}
+
 //Functions
 //Constructor & Destructor
 
@@ -229,11 +246,11 @@ void BasicArrayList<T>::insert(unsigned long long index, const T &t, unsigned lo
 
 template<typename T>
 void BasicArrayList<T>::insert(unsigned long long index, const BasicArrayList &basicArrayList) {
-    insert(index, basicArrayList.getBottom(), basicArrayList.getLength());
+    insert(index, basicArrayList.getLength(), basicArrayList.getBottom());
 }
 
 template<typename T>
-void BasicArrayList<T>::insert(unsigned long long index, const T *array, unsigned long long arraySize) {
+void BasicArrayList<T>::insert(unsigned long long index, unsigned long long arraySize, const T *array) {
     checkData();
 
     if (length + arraySize > size) {

@@ -6,6 +6,8 @@
 #include "../BasicLinkedList.cpp"
 
 
+void testOperator();
+
 void testShow();
 
 void testToString();
@@ -42,8 +44,8 @@ void testConstructorAndDestructor();
 
 int main() {
     testConstructorAndDestructor();
-    testGetterAndSetter();
-    testPrivateFunction();
+//    testGetterAndSetter();
+//    testPrivateFunction();
     testIsEmpty();
     testGet();
     testGetIndex();
@@ -58,6 +60,7 @@ int main() {
     testResize();
     testToString();
     testShow();
+    testOperator();
     return 0;
 }
 
@@ -82,56 +85,56 @@ void testConstructorAndDestructor() {
     std::cout<<std::endl;
 }
 
-void testGetterAndSetter() {
-    std::cout<<"###Test Getter And Setter###"<<std::endl;
-    BasicArrayList<int>a;
-
-    a.add(1);
-    a.add(2);
-    a.add(3);
-
-    a.show();
-    std::cout<<std::endl;
-
-    std::cout<<"bottom:"<<a.getBottom()<<std::endl;
-    std::cout<<"size:"<<a.getSize()<<std::endl;
-    std::cout<<"length:"<<a.getLength()<<std::endl;
-    std::cout<<std::endl;
-
-//    a.setBottom(nullptr);
-    a.setLength(200);
-    a.setSize(114514);
-
-    std::cout<<"bottom:"<<a.getBottom()<<std::endl;
-    std::cout<<"size:"<<a.getSize()<<std::endl;
-    std::cout<<"length:"<<a.getLength()<<std::endl;
-    std::cout<<std::endl;
-}
-
-void testPrivateFunction() {
-    std::cout<<"###Test Private Function###"<<std::endl;
-    BasicArrayList<int>a;
-
-    a.add(1);
-    a.add(2);
-    a.add(3);
-
-    a.show();
-    std::cout<<std::endl;
-
-    std::cout<<"check data:"<<std::endl;
-    std::cout<<"isFull:"<<a.isFull()<<std::endl;
-    a.reSize(3);
-    std::cout<<"isFull:"<<a.isFull()<<std::endl;
-    std::cout<<std::endl;
-
-    a.show();
-    std::cout<<std::endl;
-
-    a.expand();
-    a.show();
-    std::cout<<std::endl;
-}
+//void testGetterAndSetter() {
+//    std::cout<<"###Test Getter And Setter###"<<std::endl;
+//    BasicArrayList<int>a;
+//
+//    a.add(1);
+//    a.add(2);
+//    a.add(3);
+//
+//    a.show();
+//    std::cout<<std::endl;
+//
+//    std::cout<<"bottom:"<<a.getBottom()<<std::endl;
+//    std::cout<<"size:"<<a.getSize()<<std::endl;
+//    std::cout<<"length:"<<a.getLength()<<std::endl;
+//    std::cout<<std::endl;
+//
+////    a.setBottom(nullptr);
+//    a.setLength(200);
+//    a.setSize(114514);
+//
+//    std::cout<<"bottom:"<<a.getBottom()<<std::endl;
+//    std::cout<<"size:"<<a.getSize()<<std::endl;
+//    std::cout<<"length:"<<a.getLength()<<std::endl;
+//    std::cout<<std::endl;
+//}
+//
+//void testPrivateFunction() {
+//    std::cout<<"###Test Private Function###"<<std::endl;
+//    BasicArrayList<int>a;
+//
+//    a.add(1);
+//    a.add(2);
+//    a.add(3);
+//
+//    a.show();
+//    std::cout<<std::endl;
+//
+//    std::cout<<"check data:"<<std::endl;
+//    std::cout<<"isFull:"<<a.isFull()<<std::endl;
+//    a.reSize(3);
+//    std::cout<<"isFull:"<<a.isFull()<<std::endl;
+//    std::cout<<std::endl;
+//
+//    a.show();
+//    std::cout<<std::endl;
+//
+//    a.expand();
+//    a.show();
+//    std::cout<<std::endl;
+//}
 
 void testIsEmpty() {
     std::cout<<"###Test Is Empty###"<<std::endl;
@@ -271,12 +274,13 @@ void testInsert() {
     a.show();
     std::cout<<std::endl;
 
-    a.insert(0,a);
+    BasicArrayList<int>a1=a;
+    a.insert(0,a1);
     a.show();
     std::cout<<std::endl;
 
     int arr[]={1,2,3};
-    a.insert(1,arr,3);
+    a.insert(1,3,arr);
     a.show();
     std::cout<<std::endl;
 }
@@ -345,5 +349,20 @@ void testShow() {
     a.add(2);
     a.add(3);
     a.show();
+    std::cout<<std::endl;
+}
+
+void testOperator(){
+    std::cout<<"###Test Operator###"<<std::endl;
+    BasicArrayList<int>a;
+
+    a.add(1);
+    a.add(2);
+    a.add(3);
+    a.show();
+    std::cout<<std::endl;
+
+    BasicArrayList<int>a1=a;
+    a1.show();
     std::cout<<std::endl;
 }

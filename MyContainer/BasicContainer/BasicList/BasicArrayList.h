@@ -16,6 +16,8 @@ const unsigned int LIST_INIT_SIZE = 100;
 template<typename T>
 class BasicArrayList {
 public:
+    //Operator
+    BasicArrayList<T>& operator=(const BasicArrayList<T>& basicArrayList);
     //Functions
     //Constructor & Destructor
     BasicArrayList();
@@ -67,13 +69,13 @@ public:
 
     void insert(
             unsigned long long index,
-            BasicArrayList const &basicArrayList
+            const BasicArrayList &basicArrayList
     );
 
-    void insert(
+     void insert(
             unsigned long long index,
-            const T *array,
-            unsigned long long arraySize
+            unsigned long long arraySize,
+            const T *array
     );
 
     void erase(unsigned long long index);
@@ -82,7 +84,7 @@ public:
 
     void reSize(unsigned long long inputSize);
 
-public:
+private:
     //Data
     T *bottom;//指向索引-1
     unsigned long long size;
