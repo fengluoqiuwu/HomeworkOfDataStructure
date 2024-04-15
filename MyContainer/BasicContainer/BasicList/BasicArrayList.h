@@ -85,7 +85,9 @@ public:
 
     void reSize(unsigned long long inputSize);
 
-    void sort();//Ascending sorting,Please reload the > & < operator before using the function
+    void ascendingSort();//Ascending sorting,Please reload the > & < operator before using the function
+
+    void descendingSort();//Descending sorting,Please reload the > & < operator before using the function
 
 private:
     //Data

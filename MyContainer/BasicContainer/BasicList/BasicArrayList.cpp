@@ -319,8 +319,14 @@ void BasicArrayList<T>::reSize(unsigned long long inputSize) {
 }
 
 template<typename T>
-void BasicArrayList<T>::sort() {
+void BasicArrayList<T>::ascendingSort() {
     std::sort(bottom,bottom+length);
+}
+
+template<typename T>
+void BasicArrayList<T>::descendingSort() {
+    std::sort(bottom,bottom+length);
+    std::reverse(bottom,bottom+length);
 }
 
 //private

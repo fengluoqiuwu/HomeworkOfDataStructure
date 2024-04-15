@@ -381,7 +381,11 @@ void testSort() {
     a.show();
     std::cout<<std::endl;
 
-    a.sort();
+    a.ascendingSort();
+    a.show();
+    std::cout<<std::endl;
+
+    a.descendingSort();
     a.show();
     std::cout<<std::endl;
 }

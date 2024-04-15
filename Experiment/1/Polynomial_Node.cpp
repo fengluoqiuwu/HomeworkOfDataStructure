@@ -153,7 +153,7 @@ Polynomial_Node::Polynomial_Node() {
 Polynomial_Node::Polynomial_Node(BasicArrayList<Node> &basicArrayList) {
     coefficientList=basicArrayList;
 
-
+    coefficientList.sort();
 }
 
 Polynomial_Node::Polynomial_Node(Node *array, unsigned long long int arraySize) {
