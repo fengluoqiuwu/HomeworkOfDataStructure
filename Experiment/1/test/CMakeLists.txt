@@ -5,6 +5,8 @@ set(CMAKE_CXX_STANDARD 26)
 
 add_executable(EXPERIMENT_1
         test.cpp
-        ../Polynomial_Node.cpp
-        ../Polynomial_Node.h
+)
+
+target_include_directories(EXPERIMENT_1
+        PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../../../MyContainer/BasicContainer/BasicList
 )

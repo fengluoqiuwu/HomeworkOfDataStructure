@@ -2,7 +2,7 @@
 // Created by 86133 on 2024/4/14.
 //
 
-#include "../../MyContainer/BasicContainer/BasicList/BasicArrayList.cpp"
+#include "BasicArrayList.h"
 
 #ifndef DATA_STRUCTURE_POLYNOMIAL_ARRAY_H
 #define DATA_STRUCTURE_POLYNOMIAL_ARRAY_H
@@ -51,6 +51,8 @@ public:
 
     bool operator==(const Polynomial_Array& other) const ;
     bool operator==(double num) const ;
+    bool operator!=(const Polynomial_Array& other) const ;
+    bool operator!=(double num) const ;
 
 private:
     //Data
@@ -58,7 +60,7 @@ private:
     //Functions
     void format();
     [[nodiscard]] const BasicArrayList<double> &getCoefficientList() const;
-    [[nodiscard]] double getFirst() const;
+    [[nodiscard]] double getFirst() const;//最高位
     [[nodiscard]] Polynomial_Array xPower(unsigned long long n) const;
 };
 

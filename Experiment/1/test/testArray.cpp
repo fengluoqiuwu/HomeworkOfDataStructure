@@ -77,7 +77,7 @@ private:
         std::cout<<"toString() : "<<p1.toString()<<std::endl;
         std::cout<<std::endl;
 
-        std::cout<<"Test toString()"<<std::endl;
+        std::cout<<"Test Show()"<<std::endl;
         Polynomial_Array p2(arr, 5);
         p2.show();
         std::cout<<std::endl;
@@ -204,6 +204,11 @@ private:
         std::cout<<"Test =="<<std::endl;
         std::cout<<"== : "<<(p1==p1)<<std::endl;
         std::cout<<"== : "<<(p1==1)<<std::endl;
+        std::cout<<std::endl;
+
+        std::cout<<"Test !="<<std::endl;
+        std::cout<<"!= : "<<(p1==p1)<<std::endl;
+        std::cout<<"!= : "<<(p1==1)<<std::endl;
         std::cout<<std::endl;
     }
 };

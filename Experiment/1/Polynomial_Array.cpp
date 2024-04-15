@@ -2,6 +2,8 @@
 // Created by 86133 on 2024/4/14.
 //
 
+#include <iostream>
+#include <sstream>
 #include "Polynomial_Array.h"
 
 //public
@@ -33,7 +35,7 @@ std::string Polynomial_Array::toString() const {
     }
     else {
         bool isFirst=true;
-        for (int i = coefficientList.getLength() - 1; i >= 1; --i) {
+        for (unsigned long long i = coefficientList.getLength() - 1; i >= 1; --i) {
             if (coefficientList.get(i) != 0) {
                 if(!isFirst){
                     if(coefficientList.get(i)>0){
@@ -46,11 +48,19 @@ std::string Polynomial_Array::toString() const {
                     isFirst= false;
                 }
 
-                if(coefficientList.get(i)==1||coefficientList.get(i)==-1){
-                    ss << "x^" << i;
+                if(i!=1) {
+                    if (coefficientList.get(i) == 1 || coefficientList.get(i) == -1) {
+                        ss << "x^" << i;
+                    } else {
+                        ss << std::abs(coefficientList.get(i)) << "x^" << i;
+                    }
                 }
-                else {
-                    ss << std::abs(coefficientList.get(i)) << "x^" << i;
+                else{
+                    if (coefficientList.get(1) == 1 || coefficientList.get(1) == -1) {
+                        ss << "x";
+                    } else {
+                        ss << std::abs(coefficientList.get(i)) << "x";
+                    }
                 }
             }
         }
@@ -140,10 +150,7 @@ double Polynomial_Array::valIntegrate(double x1, double x2) const {
 
         //Operator
 
-Polynomial_Array &Polynomial_Array::operator=(const Polynomial_Array &other) {
-    coefficientList=other.coefficientList;
-    return *this;
-}
+Polynomial_Array &Polynomial_Array::operator=(const Polynomial_Array &other) = default;
 
 Polynomial_Array &Polynomial_Array::operator=(double num) {
     coefficientList.clear();
@@ -210,6 +217,10 @@ Polynomial_Array &Polynomial_Array::operator*=(double num) {
 }
 
 Polynomial_Array &Polynomial_Array::operator/=(const Polynomial_Array &other) {
+    if(other.deg()==0){
+        std::cerr<<"Polynomial_Array : operator/= receive number!"<<std::endl;
+        throw std::exception();
+    }
     *this=(*this)/other;
     return *this;
 }
@@ -249,7 +260,7 @@ Polynomial_Array &Polynomial_Array::operator%=(const Polynomial_Array &other) {
 
 Polynomial_Array Polynomial_Array::operator+(const Polynomial_Array &other) const {
     Polynomial_Array result=*this;
-    BasicArrayList<double> otherList=other.getCoefficientList();
+    const BasicArrayList<double>& otherList=other.getCoefficientList();
 
     for(int i=0;i<otherList.getLength();i++){
         if(i==result.coefficientList.getLength()){
@@ -271,7 +282,7 @@ Polynomial_Array Polynomial_Array::operator+(double num) const {
 
 Polynomial_Array Polynomial_Array::operator-(const Polynomial_Array &other) const {
     Polynomial_Array result=*this;
-    BasicArrayList<double> otherList=other.getCoefficientList();
+    const BasicArrayList<double>& otherList=other.getCoefficientList();
 
     for(int i=0;i<otherList.getLength();i++){
         if(i==result.coefficientList.getLength()){
@@ -329,7 +340,7 @@ Polynomial_Array Polynomial_Array::operator/(const Polynomial_Array &other) cons
     result.coefficientList.clear();
 
     if(other.deg()==0){
-        std::cerr<<"Polynomial_Array : operator% receive number!"<<std::endl;
+        std::cerr<<"Polynomial_Array : operator/ receive number!"<<std::endl;
         throw std::exception();
     }
 
@@ -398,6 +409,14 @@ bool Polynomial_Array::operator==(const Polynomial_Array &other) const {
 
 bool Polynomial_Array::operator==(double num) const {
     return (coefficientList.getLength()==1&&coefficientList.get(0)==num);
+}
+
+bool Polynomial_Array::operator!=(const Polynomial_Array &other) const {
+    return !(*this==other);
+}
+
+bool Polynomial_Array::operator!=(double num) const {
+    return !(*this==num);
 }
 
 //private

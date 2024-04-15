@@ -6,7 +6,7 @@
 #define DATA_STRUCTURE_POLYNOMIAL_NODE_H
 
 
-#include "../../MyContainer/BasicContainer/BasicList/BasicArrayList.h"
+#include "BasicArrayList.h"
 
 class Node{
 public:
@@ -16,6 +16,7 @@ public:
     explicit Node(double number);
     Node(double coefficient, unsigned long long int exp);
     void xPower(unsigned long long n);
+    [[nodiscard]] double getValue(double x)const;
 
     Node& operator=(double num);
     Node& operator=(const Node& other);
@@ -31,12 +32,15 @@ public:
 
     bool operator==(double num) const;//任何为0的都相等
     bool operator==(const Node& other) const;//任何为0的都相等
+    bool operator!=(double num) const;//任何为0的都相等
+    bool operator!=(const Node& other) const;//任何为0的都相等
     bool operator>(const Node& other) const;//比较的是exp
     bool operator<(const Node& other) const;//比较的是exp
     bool operator>=(const Node& other) const;//比较的是exp
     bool operator<=(const Node& other) const;//比较的是exp
 };//注意防止不规范的0_Node出现
 
+//没有用大浮点数，用的是double，如果幂次过大求值肯定会出现问题
 class Polynomial_Node {
 public:
     //Functions
@@ -80,14 +84,17 @@ public:
 
     bool operator==(const Polynomial_Node& other) const ;
     bool operator==(double num) const ;
+    bool operator!=(const Polynomial_Node& other) const ;
+    bool operator!=(double num) const ;
 
-private:
+public:
     //Data
-    BasicArrayList<Node> coefficientList;//降序排序
+    BasicArrayList<Node> coefficientList;//降序排序,最后一项必然是常数项，0也要有
     //Functions
-void format();
+    void format();//去除0，保留常数,排序
     [[nodiscard]] const BasicArrayList<Node> &getCoefficientList() const;
-    [[nodiscard]] Node getFirst() const;
+    [[nodiscard]] Node getFirst() const;//最高位
+    [[nodiscard]] Node getLast() const;//常数位
     [[nodiscard]] Polynomial_Node xPower(unsigned long long n) const;
 };
 
