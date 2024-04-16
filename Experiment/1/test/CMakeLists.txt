@@ -5,6 +5,10 @@ set(CMAKE_CXX_STANDARD 26)
 
 add_executable(EXPERIMENT_1
         test.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/../Polynomial_Array.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/../Polynomial_Node.cpp
+        testArray.cpp
+        testNode.cpp
 )
 
 target_include_directories(EXPERIMENT_1

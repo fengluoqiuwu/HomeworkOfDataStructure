@@ -2,10 +2,10 @@
 // Created by 86133 on 2024/4/15.
 //
 
-#include "testArray.cpp"
-#include "testNode.cpp"
+#include "testArray.h"
+#include "testNode.h"
 
-bool Flag= false;
+bool Flag= true;
 
 int main(){
 
