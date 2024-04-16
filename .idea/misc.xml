@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="CMakeWorkspace" PROJECT_DIR="$PROJECT_DIR$/Experiment/1/test">
+  <component name="CMakeWorkspace" PROJECT_DIR="$PROJECT_DIR$/Homework/week7">
     <contentRoot DIR="$PROJECT_DIR$" />
   </component>
   <component name="CidrRootsConfiguration">
     <excludeRoots>
+      <file path="$PROJECT_DIR$/Experiment/1/test/cmake-build-debug" />
+      <file path="$PROJECT_DIR$/Experiment/1/test/cmake-build-release" />
+      <file path="$PROJECT_DIR$/Homework/week6/cmake-build-debug" />
+      <file path="$PROJECT_DIR$/Homework/week6/cmake-build-release" />
       <file path="$PROJECT_DIR$/MyContainer/cmake-build-debug" />
       <file path="$PROJECT_DIR$/cmake-build-debug" />
     </excludeRoots>
