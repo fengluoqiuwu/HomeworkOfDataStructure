@@ -52,9 +52,6 @@ public:
             unsigned long long beginIndex,
             unsigned long long endIndex
     ) const;//[beginIndex,endIndex)
-    [[nodiscard]] std::string toString() const;
-
-    void show() const;
 
     //Modify
     void clear();
@@ -273,30 +270,6 @@ BasicArrayList<T> BasicArrayList<T>::subList(
     subArrayList->setLength(endIndex - beginIndex);
 
     return *subArrayList;
-}
-
-template<typename T>
-std::string BasicArrayList<T>::toString() const {
-    std::stringstream ss;
-    ss << '[';
-    for (int i = 0; i < length; i++) {
-        //ss << *(bottom + i);
-        if (i != length - 1) {
-            ss << ',';
-        }
-    }
-    ss << ']';
-
-    return ss.str();
-}
-
-template<typename T>
-void BasicArrayList<T>::show() const {
-    std::cout << "BasicArrayList" << std::endl;
-    std::cout << toString() << std::endl;
-    std::cout << "bottom:" << bottom << std::endl;
-    std::cout << "size:" << size << std::endl;
-    std::cout << "length:" << length << std::endl;
 }
 
 //Modify

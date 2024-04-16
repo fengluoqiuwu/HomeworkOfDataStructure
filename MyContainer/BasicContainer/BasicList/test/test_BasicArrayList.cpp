@@ -7,10 +7,6 @@
 
 void testOperator();
 
-void testShow();
-
-void testToString();
-
 void testResize();
 
 void testRemove();
@@ -59,8 +55,6 @@ int main() {
     testErase();
     testRemove();
     testResize();
-    testToString();
-    testShow();
     testOperator();
     testSort();
     return 0;
@@ -70,20 +64,16 @@ void testConstructorAndDestructor() {
     std::cout<<"###Test Constructor And Destructor###"<<std::endl;
 
     BasicArrayList<int> a;
-    a.show();
     std::cout<<std::endl;
 
     BasicArrayList<int> b(200);
-    b.show();
     std::cout<<std::endl;
 
     int arr[]={1,2,3,4};
     BasicArrayList<int> c(arr,4);
-    c.show();
     std::cout<<std::endl;
 
     const BasicArrayList<int>&d(c);
-    d.show();
     std::cout<<std::endl;
 }
 
@@ -145,7 +135,6 @@ void testIsEmpty() {
     a.add(1);
     a.add(2);
     a.add(3);
-    a.show();
     std::cout<<std::endl;
 
     std::cout<<"IsEmpty:"<<a.isEmpty()<<std::endl;
@@ -160,7 +149,6 @@ void testGet() {
     a.add(1);
     a.add(2);
     a.add(3);
-    a.show();
     std::cout<<std::endl;
 
     std::cout<<"Get:"<<a.get(1)<<std::endl;
@@ -177,7 +165,6 @@ void testGetIndex() {
     a.add(1);
     a.add(2);
     a.add(3);
-    a.show();
     std::cout<<std::endl;
 
     std::cout<<"GetIndex:"<<a.getIndex(a.get(1))<<std::endl;
@@ -192,7 +179,6 @@ void testFind() {
     a.add(1);
     a.add(2);
     a.add(3);
-    a.show();
     std::cout<<std::endl;
 
     std::cout<<"GetIndex:"<<a.find(a.get(1))<<std::endl;
@@ -207,11 +193,9 @@ void testSubList() {
     a.add(1);
     a.add(2);
     a.add(3);
-    a.show();
     std::cout<<std::endl;
 
     BasicArrayList<int> a1=a.subList(0,3);
-    a1.show();
     std::cout<<std::endl;
 }
 
@@ -222,11 +206,9 @@ void testClear() {
     a.add(1);
     a.add(2);
     a.add(3);
-    a.show();
     std::cout<<std::endl;
 
     a.clear();
-    a.show();
     std::cout<<std::endl;
 }
 
@@ -237,7 +219,6 @@ void testAdd() {
     a.add(1);
     a.add(2);
     a.add(3);
-    a.show();
     std::cout<<std::endl;
 }
 
@@ -248,13 +229,11 @@ void testAddAll() {
     a.add(1);
     a.add(2);
     a.add(3);
-    a.show();
     std::cout<<std::endl;
 
     int arr[]={1,2,3};
     a.addAll(arr,3);
 
-    a.show();
     std::cout<<std::endl;
 }
 
@@ -265,25 +244,20 @@ void testInsert() {
     a.add(1);
     a.add(2);
     a.add(3);
-    a.show();
     std::cout<<std::endl;
 
     a.insert(0,1);
-    a.show();
     std::cout<<std::endl;
 
     a.insert(0,1,10);
-    a.show();
     std::cout<<std::endl;
 
     BasicArrayList<int>a1=a;
     a.insert(0,a1);
-    a.show();
     std::cout<<std::endl;
 
     int arr[]={1,2,3};
     a.insert(1,3,arr);
-    a.show();
     std::cout<<std::endl;
 }
 
@@ -294,11 +268,9 @@ void testErase() {
     a.add(1);
     a.add(2);
     a.add(3);
-    a.show();
     std::cout<<std::endl;
 
     a.erase(1);
-    a.show();
     std::cout<<std::endl;
 }
 
@@ -309,11 +281,9 @@ void testRemove() {
     a.add(1);
     a.add(2);
     a.add(3);
-    a.show();
     std::cout<<std::endl;
 
     a.remove(a.get(1));
-    a.show();
     std::cout<<std::endl;
 }
 
@@ -324,33 +294,9 @@ void testResize() {
     a.add(1);
     a.add(2);
     a.add(3);
-    a.show();
     std::cout<<std::endl;
 
     a.reSize(1);
-    a.show();
-    std::cout<<std::endl;
-}
-
-void testToString() {
-    std::cout<<"###Test ToString###"<<std::endl;
-    BasicArrayList<int>a;
-
-    a.add(1);
-    a.add(2);
-    a.add(3);
-    std::cout<<a.toString()<<std::endl;
-    std::cout<<std::endl;
-}
-
-void testShow() {
-    std::cout<<"###Test Show###"<<std::endl;
-    BasicArrayList<int>a;
-
-    a.add(1);
-    a.add(2);
-    a.add(3);
-    a.show();
     std::cout<<std::endl;
 }
 
@@ -361,11 +307,9 @@ void testOperator(){
     a.add(1);
     a.add(2);
     a.add(3);
-    a.show();
     std::cout<<std::endl;
 
     BasicArrayList<int>a1=a;
-    a1.show();
     std::cout<<std::endl;
 }
 
@@ -377,14 +321,11 @@ void testSort() {
     a.add(2);
     a.add(2);
     a.add(1);
-    a.show();
     std::cout<<std::endl;
 
     a.ascendingSort();
-    a.show();
     std::cout<<std::endl;
 
     a.descendingSort();
-    a.show();
     std::cout<<std::endl;
 }
