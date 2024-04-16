@@ -13,6 +13,7 @@ class BasicError : public std::exception{
 public:
     explicit BasicError(std::string& msg){
         message=msg;
+        std::cerr<<msg<<std::endl;
     }
 
     [[nodiscard]] std::string getMessage() const {

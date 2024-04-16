@@ -8,7 +8,7 @@
 class testArray{
 public:
     static void doTest() {
-//    testPrivateFunctions();
+        testPrivateFunctions();
         testConstructorAndDestructor();
         testStringAndPrint();
         testCalculate();
@@ -21,7 +21,7 @@ public:
     }
 private:
 
-//    static void testPrivateFunctions() {
+    static void testPrivateFunctions() {
 //        std::cout<<"###Test Private Functions###"<<std::endl<<std::endl;
 //
 //        std::cout<<"Test format()"<<std::endl;
@@ -46,7 +46,7 @@ private:
 //        Polynomial_Array p4(arr2, 5);
 //        p4.xPower(3).show();
 //        std::cout<<std::endl;
-//    }
+    }
 
     static void testConstructorAndDestructor() {
         std::cout<<"###Test Constructor And Destructor###"<<std::endl<<std::endl;
@@ -91,6 +91,7 @@ private:
         std::cout<<"Test deg()"<<std::endl;
         Polynomial_Array p1(arr, 5);
         std::cout<<"deg() : "<<p1.deg()<<std::endl;
+        p1.show();
         std::cout<<std::endl;
 
         std::cout<<"Test getValue()"<<std::endl;
@@ -207,8 +208,8 @@ private:
         std::cout<<std::endl;
 
         std::cout<<"Test !="<<std::endl;
-        std::cout<<"!= : "<<(p1==p1)<<std::endl;
-        std::cout<<"!= : "<<(p1==1)<<std::endl;
+        std::cout<<"!= : "<<(p1!=p1)<<std::endl;
+        std::cout<<"!= : "<<(p1!=1)<<std::endl;
         std::cout<<std::endl;
     }
 };

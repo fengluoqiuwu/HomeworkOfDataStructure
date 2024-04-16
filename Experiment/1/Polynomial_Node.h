@@ -13,6 +13,7 @@ public:
     double coefficient;
     unsigned long long exp;
 
+    Node();
     explicit Node(double number);
     Node(double coefficient, unsigned long long int exp);
     void xPower(unsigned long long n);
@@ -87,7 +88,7 @@ public:
     bool operator!=(const Polynomial_Node& other) const ;
     bool operator!=(double num) const ;
 
-public:
+private:
     //Data
     BasicArrayList<Node> coefficientList;//降序排序,最后一项必然是常数项，0也要有
     //Functions

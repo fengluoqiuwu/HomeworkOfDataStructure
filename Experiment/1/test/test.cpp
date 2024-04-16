@@ -5,7 +5,7 @@
 #include "testArray.cpp"
 #include "testNode.cpp"
 
-bool Flag=true;
+bool Flag= false;
 
 int main(){
 

@@ -7,6 +7,11 @@
 #include <valarray>
 #include "Polynomial_Node.h"
 
+Node::Node() {
+    coefficient=0;
+    exp=0;
+}
+
 Node::Node(double number) : coefficient(number) {
     exp=0;
 }
@@ -117,7 +122,7 @@ Node Node::operator/(const Node &other) const {
 }
 
 bool Node::operator==(double num) const {
-    if(coefficient==0&&num==0){
+    if(std::abs(coefficient)<=1e-10&&std::abs(num)<=1e-10){
         return true;
     }
     
@@ -209,7 +214,7 @@ std::string Polynomial_Node::toString() const {
     }//处理系数
 
     //处理常数项
-    Node node=coefficientList.get(0);
+    Node node=getLast();
     if(isFirst){
         ss<<node.coefficient;
     }
@@ -263,9 +268,9 @@ Polynomial_Node Polynomial_Node::integrate() const {
     BasicArrayList<Node> coeList;
     coeList.add(Node(0));
 
-    for(int i=0;i<coefficientList.getLength()-1;++i){
+    for(int i=0;i<coefficientList.getLength();++i){
         Node node=coefficientList.get(i);
-        coeList.add(Node(node.coefficient/static_cast<double>(node.exp),node.exp+1));
+        coeList.add(Node(node.coefficient/static_cast<double>(node.exp+1),node.exp+1));
     }
 
     return Polynomial_Node(coeList);
@@ -367,23 +372,23 @@ Polynomial_Node Polynomial_Node::operator+(const Polynomial_Node &other) const {
     unsigned long long thisIndex=0;
     unsigned long long otherIndex=0;
 
-    while(thisIndex==((*this).coefficientList.getLength())&&
-          otherIndex==(other.coefficientList.getLength())
+    while(thisIndex!=((*this).coefficientList.getLength())&&
+          otherIndex!=(other.coefficientList.getLength())
             ){
         if((*this).coefficientList.get(thisIndex)>
         other.coefficientList.get(otherIndex)){
             result.coefficientList.add((*this).coefficientList.get(thisIndex));
             thisIndex++;
         }
-        else if((*this).coefficientList.get(thisIndex)==
+        else if((*this).coefficientList.get(thisIndex)<
                 other.coefficientList.get(otherIndex)){
-            result.coefficientList.add((*this).coefficientList.get(thisIndex)+
-                                       other.coefficientList.get(otherIndex));
-            thisIndex++;
+            result.coefficientList.add(other.coefficientList.get(otherIndex));
             otherIndex++;
         }
         else{
-            result.coefficientList.add(other.coefficientList.get(otherIndex));
+            result.coefficientList.add((*this).coefficientList.get(thisIndex)+
+                                       other.coefficientList.get(otherIndex));
+            thisIndex++;
             otherIndex++;
         }
     }
@@ -406,25 +411,25 @@ Polynomial_Node Polynomial_Node::operator-(const Polynomial_Node &other) const {
     unsigned long long thisIndex=0;
     unsigned long long otherIndex=0;
 
-    while(thisIndex==((*this).coefficientList.getLength())&&
-          otherIndex==(other.coefficientList.getLength())
+    while(thisIndex!=((*this).coefficientList.getLength())&&
+          otherIndex!=(other.coefficientList.getLength())
             ){
         if((*this).coefficientList.get(thisIndex)>
            other.coefficientList.get(otherIndex)){
             result.coefficientList.add((*this).coefficientList.get(thisIndex));
             thisIndex++;
         }
-        else if((*this).coefficientList.get(thisIndex)==
+        else if((*this).coefficientList.get(thisIndex)<
                 other.coefficientList.get(otherIndex)){
-            result.coefficientList.add((*this).coefficientList.get(thisIndex)-
-                                       other.coefficientList.get(otherIndex));
-            thisIndex++;
-            otherIndex++;
-        }
-        else{
             Node node=other.coefficientList.get(otherIndex);
             node.coefficient=-node.coefficient;
             result.coefficientList.add(node);
+            otherIndex++;
+        }
+        else{
+            result.coefficientList.add((*this).coefficientList.get(thisIndex)-
+                                       other.coefficientList.get(otherIndex));
+            thisIndex++;
             otherIndex++;
         }
     }
@@ -446,7 +451,7 @@ Polynomial_Node Polynomial_Node::operator*(const Polynomial_Node &other) const {
 
     if((*this!=0)&&other!=0) {
         for (int i = 0; i <other.coefficientList.getLength();++i){
-            Node node=coefficientList.get(i);
+            Node node=other.coefficientList.get(i);
             result+=((*this).xPower(node.exp)*node.coefficient);
         }
     }
@@ -528,15 +533,16 @@ Polynomial_Node Polynomial_Node::operator%(const Polynomial_Node &other) const {
 }
 
 bool Polynomial_Node::operator==(const Polynomial_Node &other) const {
-    if(coefficientList.getLength()==other.coefficientList.getLength()){
-        for(int i=0;i<=coefficientList.getLength();i++){
-            if(coefficientList.get(i)!=other.coefficientList.get(i)){
-                return false;
-            }
-        }
-        return true;
+    if(coefficientList.getLength()!=other.coefficientList.getLength()){
+        return false;
     }
-    return false;
+
+    for(int i=0;i<coefficientList.getLength();i++){
+        if(coefficientList.get(i)!=other.coefficientList.get(i)){
+            return false;
+        }
+    }
+    return true;
 }
 
 bool Polynomial_Node::operator==(double num) const {
@@ -559,9 +565,9 @@ void Polynomial_Node::format() {
         }
     }
 
-    coefficientList.descendingSort();
+    coefficientList.descendingSort(0,coefficientList.getLength());
 
-    if(getLast().exp!=0){
+    if(coefficientList.getLength()==0||getLast().exp!=0){
         coefficientList.add(Node(0));
     }
 }
@@ -580,8 +586,8 @@ Node Polynomial_Node::getLast() const{
 
 Polynomial_Node Polynomial_Node::xPower(unsigned long long int n) const {
     Polynomial_Node copy=*this;
-    for(int i=0;i<coefficientList.getLength();i++){
-        coefficientList.get(i).xPower(n);
+    for(int i=0;i<copy.coefficientList.getLength();i++){
+        copy.coefficientList.get(i).xPower(n);
     }
 
     copy.format();

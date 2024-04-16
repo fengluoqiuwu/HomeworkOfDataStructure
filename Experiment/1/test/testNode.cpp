@@ -22,34 +22,34 @@ public:
 private:
 
     static void testPrivateFunctions() {
-        std::cout<<"###Test Private Functions###"<<std::endl<<std::endl;
-
-        std::cout<<"Test format()"<<std::endl;
-        Node arr1[]={Node(0,0),Node(0,1),Node(0,2)};
-        Polynomial_Node p1(arr1, 3);
-        p1.format();
-        p1.show();
-        std::cout<<std::endl;
-
-        std::cout<<"Test getCoefficientList"<<std::endl;
-        Polynomial_Node p2(arr1, 3);
-        p2.getCoefficientList().show();
-        std::cout<<std::endl;
-
-        std::cout<<"Test getFirst"<<std::endl;
-        Node arr2[]={Node(1,0),Node(1.2,3),Node(23,4),Node(3.4,5)};
-        Polynomial_Node p3(arr2, 5);
-        std::cout<<"getFirst():"<<p3.getFirst().coefficient<<std::endl;
-        std::cout<<std::endl;
-
-        std::cout<<"Test getLast"<<std::endl;
-        std::cout<<"getLast():"<<p2.getLast().coefficient<<std::endl;
-        std::cout<<std::endl;
-
-        std::cout<<"Test xPower"<<std::endl;
-        Polynomial_Node p4(arr2, 5);
-        p4.xPower(3).show();
-        std::cout<<std::endl;
+//        std::cout<<"###Test Private Functions###"<<std::endl<<std::endl;
+//
+//        std::cout<<"Test format()"<<std::endl;
+//        Node arr1[]={Node(0,0),Node(0,1),Node(0,2)};
+//        Polynomial_Node p1(arr1, 3);
+//        p1.format();
+//        p1.show();
+//        std::cout<<std::endl;
+//
+//        std::cout<<"Test getCoefficientList"<<std::endl;
+//        Polynomial_Node p2(arr1, 3);
+//        p2.getCoefficientList().show();
+//        std::cout<<std::endl;
+//
+//        std::cout<<"Test getFirst"<<std::endl;
+//        Node arr2[]={Node(1,0),Node(1.2,3),Node(23,4),Node(3.4,5)};
+//        Polynomial_Node p3(arr2, 4);
+//        std::cout<<"getFirst():"<<p3.getFirst().coefficient<<std::endl;
+//        std::cout<<std::endl;
+//
+//        std::cout<<"Test getLast"<<std::endl;
+//        std::cout<<"getLast():"<<p3.getLast().coefficient<<std::endl;
+//        std::cout<<std::endl;
+//
+//        std::cout<<"Test xPower"<<std::endl;
+//        Polynomial_Node p4(arr2, 4);
+//        p4.xPower(3).show();
+//        std::cout<<std::endl;
     }
 
     static void testConstructorAndDestructor() {
@@ -95,6 +95,7 @@ private:
         std::cout<<"Test deg()"<<std::endl;
         Polynomial_Node p1(arr, 5);
         std::cout<<"deg() : "<<p1.deg()<<std::endl;
+        p1.show();
         std::cout<<std::endl;
 
         std::cout<<"Test getValue()"<<std::endl;
@@ -211,8 +212,8 @@ private:
         std::cout<<std::endl;
 
         std::cout<<"Test !="<<std::endl;
-        std::cout<<"!= : "<<(p1==p1)<<std::endl;
-        std::cout<<"!= : "<<(p1==1)<<std::endl;
+        std::cout<<"!= : "<<(p1!=p1)<<std::endl;
+        std::cout<<"!= : "<<(p1!=1)<<std::endl;
         std::cout<<std::endl;
     }
 };

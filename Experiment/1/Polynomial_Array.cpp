@@ -108,6 +108,7 @@ double Polynomial_Array::getValue(double x) const {
 
 Polynomial_Array Polynomial_Array::differentiate() const {
     Polynomial_Array p;
+    p.coefficientList.clear();
 
     for(int i=1;i<coefficientList.getLength();i++){
         double coefficient=coefficientList.get(i);
