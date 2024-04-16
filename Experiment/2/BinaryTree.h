@@ -28,7 +28,7 @@ public:
     std::list<T*> PreorderTraversal() const;
     std::list<T*> InorderTraversal() const;
     std::list<T*> PostorderTraversal() const;
-    std::list<std::list<T*>> LevelorderTraversal() const;
+    std::list<std::list<T*>> LevelOrderTraversal() const;
     //Search
     Node<T>& search(T& t);
     //Judgment

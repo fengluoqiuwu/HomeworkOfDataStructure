@@ -60,7 +60,7 @@ std::list<T *> BinaryTree<T>::PostorderTraversal() const {
 }
 
 template<typename T>
-std::list<std::list<T *>> BinaryTree<T>::LevelorderTraversal() const {
+std::list<std::list<T *>> BinaryTree<T>::LevelOrderTraversal() const {
     return std::list<std::list<T *>>();
 }
 
