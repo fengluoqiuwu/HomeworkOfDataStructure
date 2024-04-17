@@ -16,7 +16,26 @@ void testArray::doTest() {
 
 void testArray::experiment() {
     std::cout<<"###Experient###"<<std::endl<<std::endl;
-    std::cout<<"懒得写了，自己看上面的程序！！！"<<std::endl;
+
+    double arr1[] ={1,2,3,4,5};
+    double arr2[] ={1.2,2.3,3.5,4.6};
+
+    Polynomial_Array p1(arr1,5);
+    Polynomial_Array p2(arr2,4);
+
+    std::cout<<"p1:"<<std::endl;
+    p1.show();
+    std::cout<<"p2:"<<std::endl;
+    p2.show();
+    std::cout<<std::endl;
+
+    std::cout<<"p1+p2:"<<std::endl;
+    (p1+p2).show();
+    std::cout<<std::endl;
+
+    std::cout<<"p1-p2:"<<std::endl;
+    (p1-p2).show();
+    std::cout<<std::endl;
 }
 
 void testArray::testPrivateFunctions() {

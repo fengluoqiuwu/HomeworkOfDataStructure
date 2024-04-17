@@ -16,7 +16,26 @@ void testNode::doTest() {
 
 void testNode::experiment() {
     std::cout<<"###Experient###"<<std::endl<<std::endl;
-    std::cout<<"懒得写了，自己看上面的程序！！！"<<std::endl;
+
+    Node arr1[] ={Node(1,0),Node(2,1),Node(3,2),Node(4,3),Node(5,4)};
+    Node arr2[] ={Node(1.2,0),Node(2.3,1),Node(3.5,2),Node(4.6,5)};
+
+    Polynomial_Node p1(arr1,5);
+    Polynomial_Node p2(arr2,4);
+
+    std::cout<<"p1:"<<std::endl;
+    p1.show();
+    std::cout<<"p2:"<<std::endl;
+    p2.show();
+    std::cout<<std::endl;
+
+    std::cout<<"p1+p2:"<<std::endl;
+    (p1+p2).show();
+    std::cout<<std::endl;
+
+    std::cout<<"p1-p2:"<<std::endl;
+    (p1-p2).show();
+    std::cout<<std::endl;
 }
 
 void testNode::testPrivateFunctions() {

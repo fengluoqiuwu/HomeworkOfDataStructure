@@ -190,7 +190,7 @@ std::string Polynomial_Node::toString() const {
     for(int i=0;i<coefficientList.getLength()-1;i++){
         Node node=coefficientList.get(i);
         if(!isFirst){
-            if(node.coefficient>0){
+            if(node.coefficient>=0){
                 ss<<"+";
             }
             else{
@@ -199,6 +199,9 @@ std::string Polynomial_Node::toString() const {
         }
         else{
             isFirst=false;
+            if(node.coefficient<0){
+                ss<<"-";
+            }
         }
 
         if(std::abs(node.coefficient)!=1){

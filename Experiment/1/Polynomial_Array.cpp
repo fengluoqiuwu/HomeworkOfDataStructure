@@ -38,7 +38,7 @@ std::string Polynomial_Array::toString() const {
         for (unsigned long long i = coefficientList.getLength() - 1; i >= 1; --i) {
             if (coefficientList.get(i) != 0) {
                 if(!isFirst){
-                    if(coefficientList.get(i)>0){
+                    if(coefficientList.get(i)>=0){
                         ss<<"+";
                     }
                     else{
@@ -46,6 +46,9 @@ std::string Polynomial_Array::toString() const {
                     }
                 } else{
                     isFirst= false;
+                    if(coefficientList.get(i)<0){
+                        ss<<"-";
+                    }
                 }
 
                 if(i!=1) {
