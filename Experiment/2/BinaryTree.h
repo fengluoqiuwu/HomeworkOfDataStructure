@@ -2,8 +2,8 @@
 // Created by 86133 on 2024/4/16.
 //
 
-#ifndef DATA_STRUCTURE_BIT_TREE_H
-#define DATA_STRUCTURE_BIT_TREE_H
+#ifndef DATA_STRUCTURE_BINARY_TREE_H
+#define DATA_STRUCTURE_BINARY_TREE_H
 
 
 #include <string>
@@ -15,29 +15,29 @@ class BinaryTree {
 public:
     //Constructor & Destructor
     BinaryTree();
-    BinaryTree(std::string preorderTraversalString);
     ~BinaryTree();
     //Root
-    bool hasRoot() const;
+    [[nodiscard]] bool hasRoot() const;
     Node<T>& getRoot();
+    void setRoot(Node<T>& inputRoot);//会释放原来的树
     //Count
-    unsigned long long getNodeAmount() const;
-    unsigned long long getLeaveAmount() const;
-    unsigned long long getHeight() const;
+    [[nodiscard]] unsigned long long getNodeAmount() const;
+    [[nodiscard]] unsigned long long getLeaveAmount() const;
+    [[nodiscard]] unsigned long long getHeight() const;
     //Traversal
     std::list<T*> PreorderTraversal() const;
     std::list<T*> InorderTraversal() const;
     std::list<T*> PostorderTraversal() const;
     std::list<std::list<T*>> LevelOrderTraversal() const;
     //Search
-    Node<T>& search(T& t);
+    Node<T>* search(T& t);
     //Judgment
-    bool isBinarySearchTree() const;
-    bool isCompleteBinaryTree() const;
-    bool isBalancedBinaryTree() const;
+    [[nodiscard]] bool isBinarySearchTree() const;
+    [[nodiscard]] bool isCompleteBinaryTree() const;
+    [[nodiscard]] bool isBalancedBinaryTree() const;
 private:
     Node<T>* root;//如果是空的就指向null
-};//TODO
+};
 
 
-#endif //DATA_STRUCTURE_BIT_TREE_H
+#endif //DATA_STRUCTURE_BINARY_TREE_H

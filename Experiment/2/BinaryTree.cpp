@@ -2,71 +2,102 @@
 // Created by 86133 on 2024/4/16.
 //
 
+#include <stack>
 #include "BinaryTree.h"
 
 template<typename T>
 BinaryTree<T>::BinaryTree() {
-
+    root= nullptr;
 }
 
 template<typename T>
-BinaryTree<T>::BinaryTree(std::string preorderTraversalString) {
-
-}
-
-template<typename T>
-BinaryTree<T>::~BinaryTree() {
-
-}
+BinaryTree<T>::~BinaryTree() = default;
 
 template<typename T>
 bool BinaryTree<T>::hasRoot() const {
-    return false;
+    return (root!= nullptr);
 }
 
 template<typename T>
 Node<T> &BinaryTree<T>::getRoot() {
-    return <#initializer#>;
+    return *root;
+}
+
+template<typename T>
+void BinaryTree<T>::setRoot(Node<T> &inputRoot) {
+    if(hasRoot()){
+        root->~Node();
+    }
+
+    root=&inputRoot;
 }
 
 template<typename T>
 unsigned long long BinaryTree<T>::getNodeAmount() const {
-    return 0;
+    if(!hasRoot()){
+        return 0;
+    }
+
+    return root->getNodeAmount();
 }
 
 template<typename T>
 unsigned long long BinaryTree<T>::getLeaveAmount() const {
-    return 0;
+    if(!hasRoot()){
+        return 0;
+    }
+
+    return root->getLeaveAmount();
 }
 
 template<typename T>
 unsigned long long BinaryTree<T>::getHeight() const {
-    return 0;
+    if(!hasRoot()){
+        return 0;
+    }
+
+    return root->getHeight();
 }
 
 template<typename T>
 std::list<T *> BinaryTree<T>::PreorderTraversal() const {
-    return std::list<T *>();
+    if(root== nullptr){
+        return std::list<T *>();
+    }
+    return root->PreorderTraversal();
 }
 
 template<typename T>
 std::list<T *> BinaryTree<T>::InorderTraversal() const {
-    return std::list<T *>();
+    if(root== nullptr){
+        return std::list<T *>();
+    }
+    return root->InorderTraversal();
 }
 
 template<typename T>
 std::list<T *> BinaryTree<T>::PostorderTraversal() const {
-    return std::list<T *>();
+    if(root== nullptr){
+        return std::list<T *>();
+    }
+    return root->PostorderTraversal();
 }
 
 template<typename T>
 std::list<std::list<T *>> BinaryTree<T>::LevelOrderTraversal() const {
-    return std::list<std::list<T *>>();
+    if(root== nullptr){
+        return std::list<std::list<T *>>();
+    }
+    return root->LevelOrderTraversal();
 }
 
 template<typename T>
-Node<T> &BinaryTree<T>::search(T &t) {
-    return <#initializer#>;
+Node<T> *BinaryTree<T>::search(T &t) {
+    if(root== nullptr){
+        return nullptr;
+    }
+
+    return root->search();
 }
 
 template<typename T>
