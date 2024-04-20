@@ -50,38 +50,33 @@ public:
     [[nodiscard]] bool isCompleteBinaryTree() const;
     [[nodiscard]] bool isBalancedBinaryTree() const;
 private:
-    T data;
+    T* data;
     Node<T>* left;
     Node<T>* right;
 };
 
 template<typename T>
 Node<T>::Node(T& inputData) {
-    data=inputData;
+    data=new T;
+    *data=inputData;
     left= nullptr;
     right= nullptr;
 }
 
 template<typename T>
 Node<T>::Node(T &inputData, Node<T> *inputLeft, Node<T> *inputRight) {
-    data=inputData;
+    data=new T;
+    *data=inputData;
     left=inputLeft;
     right=inputRight;
 }
 
 template<typename T>
-Node<T>::~Node() {
-    if(left!= nullptr){
-        left->~Node();
-    }
-    if(right!= nullptr){
-        right->~Node();
-    }
-}
+Node<T>::~Node() =default;
 
 template<typename T>
 T &Node<T>::getData() {
-    return data;
+    return *data;
 }
 
 template<typename T>
@@ -183,7 +178,7 @@ template<typename T>
 std::list<T *> Node<T>::PreorderTraversal() const {
     std::list<T *>result;
 
-    result.push_back(&data);
+    result.push_back(data);
     if(hasLeft()){
         result.splice(result.end(),left->PreorderTraversal());
     }
@@ -201,7 +196,7 @@ std::list<T *> Node<T>::InorderTraversal() const {
     if(hasLeft()){
         result.splice(result.end(),left->InorderTraversal());
     }
-    result.push_back(&data);
+    result.push_back(data);
     if(hasRight()){
         result.splice(result.end(),right->InorderTraversal());
     }
@@ -219,14 +214,14 @@ std::list<T *> Node<T>::PostorderTraversal() const {
     if(hasRight()){
         result.splice(result.end(),right->PostorderTraversal());
     }
-    result.push_back(&data);
+    result.push_back(data);
 
     return result;
 }
 
 template<typename T>
 std::list<std::list<T *>> Node<T>::LevelOrderTraversal() const {
-    std::list<T*> root ={&data};
+    std::list<T*> root ={data};
     std::list<std::list<T *>> rootList={root};
     std::list<std::list<T *>> leftList;
     std::list<std::list<T *>> rightList;
@@ -240,11 +235,14 @@ std::list<std::list<T *>> Node<T>::LevelOrderTraversal() const {
 
     unsigned long long count=std::max(leftList.size(),rightList.size());
 
-    rootList.insert(rootList.end(),std::list<T *>(),count);
+    for(int i=1;i<=count;++i){
+        rootList.push_back(std::list<T *>());
+    }
 
-    std::iterator rootIt=rootList.begin()+1;
-    std::iterator leftIt=leftList.begin();
-    std::iterator rightIt=rightList.begin();
+    typename std::list<std::list<T *>>::iterator rootIt=rootList.begin();
+    rootIt++;
+    typename std::list<std::list<T *>>::iterator leftIt=leftList.begin();
+    typename std::list<std::list<T *>>::iterator rightIt=rightList.begin();
 
     for(int i=1;i<=leftList.size();++i){
         (*rootIt).splice((*rootIt).end(),(*leftIt));
@@ -252,12 +250,13 @@ std::list<std::list<T *>> Node<T>::LevelOrderTraversal() const {
         leftIt++;
     }
 
-    rootIt=rootList.begin()+1;
+    rootIt=rootList.begin();
+    rootIt++;
 
     for(int i=1;i<=rightList.size();++i){
-        (*rootIt).splice((*rootIt).end(),(*rightList));
+        (*rootIt).splice((*rootIt).end(),(*rightIt));
         rootIt++;
-        rightList++;
+        rightIt++;
     }
 
     return rootList;
@@ -265,7 +264,7 @@ std::list<std::list<T *>> Node<T>::LevelOrderTraversal() const {
 
 template<typename T>
 Node<T>* Node<T>::search(T &t) {
-    if(data==t){
+    if(data==&t){
         return this;
     }
 
@@ -329,7 +328,7 @@ Node<T>* Node<T>::copy() const {
         newRight=right->copy();
     }
 
-    return new Node(data,newLeft,newRight);
+    return new Node(*data,newLeft,newRight);
 }
 
 template<typename T>

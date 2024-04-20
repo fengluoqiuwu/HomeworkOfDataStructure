@@ -29,16 +29,6 @@ BinaryTree<char> BinaryTreeTools::initCharBinaryTree(const std::string &preorder
                 if(helperStack.top()->hasLeft() || isOccupied){
                     isOccupied= false;
                     helperStack.top()->setRight(node);
-
-                    bool isFull=true;
-                    while(isFull){
-                        Node<char>* node1=helperStack.top();
-                        helperStack.pop();
-                        isFull=(node1==&helperStack.top()->getLeft());
-                        if(helperStack.empty()){
-                            return result;
-                        }
-                    }
                 }
                 else{
                     helperStack.top()->setLeft(node);
@@ -61,7 +51,7 @@ BinaryTree<char> BinaryTreeTools::initCharBinaryTree(const std::string &preorder
                 while(isFull){
                     Node<char>* node1=helperStack.top();
                     helperStack.pop();
-                    isFull=(node1==&helperStack.top()->getLeft());
+                    isFull=(node1==&helperStack.top()->getRight());
                     if(helperStack.empty()){
                         return result;
                     }
