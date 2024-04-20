@@ -9,14 +9,14 @@
 #include <string>
 #include "BinaryTree.h"
 
-template<typename T>
 class BinaryTreeTools {
-    static BinaryTree<char> initCharBinaryTree(const std::string& preorderTraversalString);//TODO
-    static std::string getPreorderString(const BinaryTree<T>& tree);//TODO
-    static std::string getInorderString(const BinaryTree<T>& tree);//TODO
-    static std::string getPostorderString(const BinaryTree<T>& tree);//TODO
-    static std::string getLevelorderString(const BinaryTree<T>& tree);//TODO
-    static void show(const BinaryTree<T>& tree);//TODO
+public:
+    static BinaryTree<char> initCharBinaryTree(const std::string& preorderTraversalString);
+    static std::string getPreorderString(const BinaryTree<char>& tree);
+    static std::string getInorderString(const BinaryTree<char>& tree);
+    static std::string getPostorderString(const BinaryTree<char>& tree);
+    static std::string getLevelOrderString(const BinaryTree<char>& tree);
+    static void show(const BinaryTree<char>& tree);
 };
 
 
