@@ -103,6 +103,7 @@ std::string BinaryTreeTools::getLevelOrderString(const BinaryTree<char> &tree) {
     std::list<std::list<char*>> levelOrderList=tree.LevelOrderTraversal();
     std::stringstream ss;
 
+    ss<<'\n';
     for(auto & it1 : levelOrderList){
         for(auto & it2 : it1){
             ss<<*it2;
