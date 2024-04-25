@@ -48,20 +48,30 @@ void testBinaryTree::testNodeConstructorAndDestructor() {
     Node<int> node1(x);
     if((node1.getData()!=10)||(node1.takeLeft()!= nullptr)||(node1.takeRight()!= nullptr)){
         Flag=false;
-        std::cout<<"explicit Node(T& inputData);"<<std::endl;
+        std::cout<<"explicit Node(T inputData);"<<std::endl;
         std::cout<<"data:"<<node1.getData()<<std::endl;
         std::cout<<"left:"<<node1.takeLeft()<<std::endl;
         std::cout<<"right:"<<node1.takeRight()<<std::endl;
         std::cout<<std::endl;
     }
 
-    Node<int> node2(x,&node1, nullptr);
-    if((node1.getData()!=10)&&(node1.takeLeft()!= &node1)&&(node1.takeRight()!= nullptr)){
+    Node<int> node2(&x);
+    if((node2.getData()!=10)||(node2.takeLeft()!= nullptr)||(node2.takeRight()!= nullptr)){
+        Flag=false;
+        std::cout<<"explicit Node(T inputData);"<<std::endl;
+        std::cout<<"data:"<<node2.getData()<<std::endl;
+        std::cout<<"left:"<<node2.takeLeft()<<std::endl;
+        std::cout<<"right:"<<node2.takeRight()<<std::endl;
+        std::cout<<std::endl;
+    }
+
+    Node<int> node3(x,&node1, nullptr);
+    if((node3.getData()!=10)||(&node3.getLeft()!= &node1)){
         Flag=false;
         std::cout<<"Node(T& inputData,Node<T>* inputLeft,Node<T>* inputRight);"<<std::endl;
-        std::cout<<"data:"<<node1.getData()<<std::endl;
-        std::cout<<"left:"<<node1.takeLeft()<<std::endl;
-        std::cout<<"right:"<<node1.takeRight()<<std::endl;
+        std::cout<<"data:"<<node3.getData()<<std::endl;
+        std::cout<<"left:"<<node3.takeLeft()<<std::endl;
+        std::cout<<"right:"<<node3.takeRight()<<std::endl;
         std::cout<<std::endl;
     }
 
@@ -94,37 +104,149 @@ void testBinaryTree::testNodeChildren() {
     std::cout<<"###Node Children###"<<std::endl<<std::endl;
     bool Flag=true;
 
+    int x1=1;
+    int x2=2;
+    int x3=3;
+
+    Node<int> node2(x2);
+    Node<int> node3(x3);
+    Node<int> node1(x1,&node2,&node3);
+
+    if(!node1.isFull()){
+        Flag=false;
+        std::cout<<"[[nodiscard]] bool isFull() const;"<<std::endl;
+        std::cout<<"node1.isFull:"<<node1.isFull()<<std::endl;
+        std::cout<<std::endl;
+    }
+
+    if(!node2.isEmpty()){
+        Flag=false;
+        std::cout<<"[[nodiscard]] bool isEmpty() const;"<<std::endl;
+        std::cout<<"node2.isEmpty:"<<node1.isEmpty()<<std::endl;
+        std::cout<<std::endl;
+    }
+
+    if(node2.hasLeft()){
+        Flag=false;
+        std::cout<<"[[nodiscard]] bool hasLeft() const;"<<std::endl;
+        std::cout<<"node2.hasLeft:"<<node1.hasLeft()<<std::endl;
+        std::cout<<std::endl;
+    }
+
+    if(node2.hasRight()){
+        Flag=false;
+        std::cout<<"[[nodiscard]] bool hasRight() const;"<<std::endl;
+        std::cout<<"node2.hasRight:"<<node1.hasRight()<<std::endl;
+        std::cout<<std::endl;
+    }
+
+    if(&node1.getLeft()!=&node2||!node1.hasLeft()){
+        Flag=false;
+        std::cout<<"Node<T>& getLeft();"<<std::endl;
+        std::cout<<"node1.getLeft():"<<&node1.getLeft()<<std::endl;
+        std::cout<<std::endl;
+    }
+
+    if(&node1.getRight()!=&node3||!node1.hasRight()){
+        Flag=false;
+        std::cout<<"Node<T>& getRight();"<<std::endl;
+        std::cout<<"node1.getRight():"<<&node1.getRight()<<std::endl;
+        std::cout<<std::endl;
+    }
+
+    if(node1.takeLeft()!=&node2||node1.hasLeft()){
+        Flag=false;
+        std::cout<<"Node<T>* takeLeft();"<<std::endl;
+        std::cout<<std::endl;
+    }
+
+    if(node1.takeRight()!=&node3||node1.hasRight()){
+        Flag=false;
+        std::cout<<"Node<T>* takeRight();"<<std::endl;
+        std::cout<<std::endl;
+    }
+
     if(Flag){
         std::cout<<"test all correct!"<<std::endl<<std::endl;
     }
-}//TODO
+}
 
 void testBinaryTree::testNodeCount() {
     std::cout<<"###Node Count###"<<std::endl<<std::endl;
     bool Flag=true;
 
+    Node<int> node1(1);
+    Node<int> node2(2);
+    Node<int> node3(3);
+    Node<int> node4(4);
+    Node<int> node5(5);
+    Node<int> node6(6,&node5,&node4);
+    Node<int> node7(7,&node6,&node3);
+    Node<int> node8(8,&node1,&node7);
+
+    if(node8.getNodeAmount()!=7){
+        Flag=false;
+        std::cout<<"[[nodiscard]] unsigned long long getNodeAmount() const;"<<std::endl;
+        std::cout<<"Node Amount:"<<node8.getNodeAmount()<<std::endl;
+        std::cout<<std::endl;
+    }
+
+    if(node8.getLeaveAmount()!=4){
+        Flag=false;
+        std::cout<<"[[nodiscard]] unsigned long long getLeaveAmount() const;"<<std::endl;
+        std::cout<<"Leave Amount:"<<node8.getLeaveAmount()<<std::endl;
+        std::cout<<std::endl;
+    }
+
+    if(node8.getHeight()!=4){
+        Flag=false;
+        std::cout<<"[[nodiscard]] unsigned long long getHeight() const;"<<std::endl;
+        std::cout<<"Height:"<<node8.getHeight()<<std::endl;
+        std::cout<<std::endl;
+    }
+
     if(Flag){
         std::cout<<"test all correct!"<<std::endl<<std::endl;
     }
-}//TODO
+}
 
 void testBinaryTree::testNodeTraversal() {
     std::cout<<"###Node Traversal###"<<std::endl<<std::endl;
-    bool Flag=true;
 
-    if(Flag){
-        std::cout<<"test all correct!"<<std::endl<<std::endl;
-    }
-}//TODO
+    std::cout << "test all correct!" << std::endl << std::endl;
+}
 
 void testBinaryTree::testNodeSearch() {
     std::cout<<"###Node Search###"<<std::endl<<std::endl;
     bool Flag=true;
 
+    Node<int> node1(1);
+    Node<int> node2(2);
+    Node<int> node3(3);
+    Node<int> node4(4);
+    Node<int> node5(5);
+    Node<int> node6(6,&node5,&node4);
+    Node<int> node7(7,&node6,&node3);
+    Node<int> node8(8,&node1,&node7);
+
+    if(node8.search(2)!= nullptr){
+        Flag=false;
+        std::cout<<"Node<T>* search(T t);"<<std::endl;
+        std::cout<<"node8.search(2):"<<node8.search(2)<<std::endl;
+        std::cout<<std::endl;
+    }
+
+    if(node8.search(4)!= &node4){
+        Flag=false;
+        std::cout<<"Node<T>* search(T t);"<<std::endl;
+        std::cout<<"node8.search(4):"<<node8.search(4)<<std::endl;
+        std::cout<<std::endl;
+    }
+
     if(Flag){
         std::cout<<"test all correct!"<<std::endl<<std::endl;
     }
-}//TODO
+}
 
 void testBinaryTree::testNodeModify() {
     std::cout<<"###Node Modify###"<<std::endl<<std::endl;

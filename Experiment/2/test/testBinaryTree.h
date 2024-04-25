@@ -19,7 +19,7 @@ private:
     static void testNodeData();
     static void testNodeChildren();
     static void testNodeCount();
-    static void testNodeTraversal();
+    static void testNodeTraversal();//test in elsewhere
     static void testNodeSearch();
     static void testNodeModify();
     static void testNodeJudgment();

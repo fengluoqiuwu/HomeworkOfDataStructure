@@ -13,8 +13,9 @@ template<typename T>
 class Node {
 public:
     //Constructor & Destructor
-    explicit Node(T& inputData);
-    Node(T& inputData,Node<T>* inputLeft,Node<T>* inputRight);
+    explicit Node(T inputData);
+    explicit Node(T* inputData);
+    Node(T inputData,Node<T>* inputLeft,Node<T>* inputRight);
     ~Node();
     //Data
     T& getData();
@@ -37,7 +38,7 @@ public:
     std::list<T*> PostorderTraversal() const;
     std::list<std::list<T*>> LevelOrderTraversal() const;
     //Search
-    Node<T>* search(T& t);
+    Node<T>* search(T t);
     //Modify
     void swap();
     void deleteLeft();
@@ -56,7 +57,7 @@ private:
 };
 
 template<typename T>
-Node<T>::Node(T& inputData) {
+Node<T>::Node(T inputData) {
     data=new T;
     *data=inputData;
     left= nullptr;
@@ -64,7 +65,15 @@ Node<T>::Node(T& inputData) {
 }
 
 template<typename T>
-Node<T>::Node(T &inputData, Node<T> *inputLeft, Node<T> *inputRight) {
+Node<T>::Node(T* inputData) {
+    data=new T;
+    *data=*inputData;
+    left= nullptr;
+    right= nullptr;
+}
+
+template<typename T>
+Node<T>::Node(T inputData, Node<T> *inputLeft, Node<T> *inputRight) {
     data=new T;
     *data=inputData;
     left=inputLeft;
@@ -263,20 +272,20 @@ std::list<std::list<T *>> Node<T>::LevelOrderTraversal() const {
 }
 
 template<typename T>
-Node<T>* Node<T>::search(T &t) {
-    if(data==&t){
+Node<T>* Node<T>::search(T t) {
+    if(*data==t){
         return this;
     }
 
     Node<T>* result= nullptr;
     if(hasLeft()){
-        result=left->search();
+        result=left->search(t);
         if(result!= nullptr){
             return result;
         }
     }
     if(hasRight()){
-        result=right->search();
+        result=right->search(t);
         if(result!= nullptr){
             return result;
         }
