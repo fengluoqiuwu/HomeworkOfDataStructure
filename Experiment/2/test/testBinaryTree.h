@@ -26,14 +26,14 @@ private:
     //Test Binary Tree
     static void testBinaryTreeConstructorAndDestructor();
     static void testBinaryTreeRoot();
-    static void testBinaryTreeCount();
-    static void testBinaryTreeTraversal();
-    static void testBinaryTreeSearch();
-    static void testBinaryTreeJudgment();
+    static void testBinaryTreeCount();//test in elsewhere
+    static void testBinaryTreeTraversal();//test in elsewhere
+    static void testBinaryTreeSearch();//test in elsewhere
+    static void testBinaryTreeJudgment();//test in elsewhere
     //Test Binary Tree Tools
-    static void testBinaryTreeToolsInit();
-    static void testBinaryTreeToolsGetString();
-    static void testBinaryTreeToolsShow();
+    static void testBinaryTreeToolsInit();//test in elsewhere
+    static void testBinaryTreeToolsGetString();//test in elsewhere
+    static void testBinaryTreeToolsShow();//test in elsewhere
 };
 
 

@@ -342,7 +342,7 @@ Node<T>* Node<T>::copy() const {
 
 template<typename T>
 bool Node<T>::isBinarySearchTree() const {
-    std::list<char*> inorderList=InorderTraversal();
+    std::list<T*> inorderList=InorderTraversal();
 
     auto it=inorderList.begin();
     for(unsigned long long i=1;i<inorderList.size();i++){
@@ -358,12 +358,12 @@ bool Node<T>::isBinarySearchTree() const {
 
 template<typename T>
 bool Node<T>::isCompleteBinaryTree() const {
-    std::list<std::list<char*>> levelOrderList=LevelOrderTraversal();
+    std::list<std::list<T*>> levelOrderList=LevelOrderTraversal();
 
-    unsigned long long height=LevelOrderTraversal();
+    unsigned long long height=levelOrderList.size();
     unsigned long long count=1;
     auto it=levelOrderList.begin();
-    for(int i=1;i<height;++i){
+    for(unsigned long long i=1;i<=height;++i){
         if(count!=(*it).size()){
             return false;
         }
@@ -384,11 +384,11 @@ bool Node<T>::isBalancedBinaryTree() const {
                     &&std::abs((long long)left->getHeight()-(long long)right->getHeight())<=1);
         }
         else{
-            return right->isEmpty();
+            return left->isEmpty();
         }
     } else{
         if(right!= nullptr){
-            return left->isEmpty();
+            return right->isEmpty();
         }
         else{
             return true;
