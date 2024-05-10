@@ -6,7 +6,8 @@
 #define DATA_STRUCTURE_TEST_BINARY_TREE_H
 
 
-#include "../../../MyContainer/Tree/BasicBinaryTree/BinaryTree.h"
+#include "../BinaryTree.h"
+#include "../Node.h"
 #include "../BinaryTreeTools.h"
 
 class testBinaryTree {
@@ -30,10 +31,6 @@ private:
     static void testBinaryTreeTraversal();//test in elsewhere
     static void testBinaryTreeSearch();//test in elsewhere
     static void testBinaryTreeJudgment();//test in elsewhere
-    //Test Binary Tree Tools
-    static void testBinaryTreeToolsInit();//test in elsewhere
-    static void testBinaryTreeToolsGetString();//test in elsewhere
-    static void testBinaryTreeToolsShow();//test in elsewhere
 };
 
 

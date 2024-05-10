@@ -1,45 +1,12 @@
 //
-// Created by 86133 on 2024/4/10.
+// Created by 86133 on 2024/5/1.
 //
 
+#include <iostream>
+#include "testBasicArrayList.h"
 #include "BasicArrayList.h"
 
-
-void testOperator();
-
-void testResize();
-
-void testRemove();
-
-void testErase();
-
-void testInsert();
-
-void testAddAll();
-
-void testAdd();
-
-void testClear();
-
-void testSubList();
-
-void testFind();
-
-void testGetIndex();
-
-void testGet();
-
-void testIsEmpty();
-
-void testPrivateFunction();
-
-void testGetterAndSetter();
-
-void testConstructorAndDestructor();
-
-void testSort();
-
-int main() {
+void testBasicArrayList::test() {
     testConstructorAndDestructor();
 //    testGetterAndSetter();
 //    testPrivateFunction();
@@ -57,10 +24,9 @@ int main() {
     testResize();
     testOperator();
     testSort();
-    return 0;
 }
 
-void testConstructorAndDestructor() {
+void testBasicArrayList::testConstructorAndDestructor() {
     std::cout<<"###Test Constructor And Destructor###"<<std::endl;
 
     BasicArrayList<int> a;
@@ -77,7 +43,7 @@ void testConstructorAndDestructor() {
     std::cout<<std::endl;
 }
 
-//void testGetterAndSetter() {
+//void testBasicArrayList::testGetterAndSetter() {
 //    std::cout<<"###Test Getter And Setter###"<<std::endl;
 //    BasicArrayList<int>a;
 //
@@ -103,7 +69,7 @@ void testConstructorAndDestructor() {
 //    std::cout<<std::endl;
 //}
 //
-//void testPrivateFunction() {
+//void testBasicArrayList::testPrivateFunction() {
 //    std::cout<<"###Test Private Function###"<<std::endl;
 //    BasicArrayList<int>a;
 //
@@ -128,7 +94,7 @@ void testConstructorAndDestructor() {
 //    std::cout<<std::endl;
 //}
 
-void testIsEmpty() {
+void testBasicArrayList::testIsEmpty() {
     std::cout<<"###Test Is Empty###"<<std::endl;
     BasicArrayList<int>a;
 
@@ -142,7 +108,7 @@ void testIsEmpty() {
     std::cout<<"IsEmpty:"<<a.isEmpty()<<std::endl;
 }
 
-void testGet() {
+void testBasicArrayList::testGet() {
     std::cout<<"###Test Get###"<<std::endl;
     BasicArrayList<int>a;
 
@@ -158,7 +124,7 @@ void testGet() {
     std::cout<<std::endl;
 }
 
-void testGetIndex() {
+void testBasicArrayList::testGetIndex() {
     std::cout<<"###Test Get Index###"<<std::endl;
     BasicArrayList<int>a;
 
@@ -172,7 +138,7 @@ void testGetIndex() {
     std::cout<<std::endl;
 }
 
-void testFind() {
+void testBasicArrayList::testFind() {
     std::cout<<"###Test Find###"<<std::endl;
     BasicArrayList<int>a;
 
@@ -186,7 +152,7 @@ void testFind() {
     std::cout<<std::endl;
 }
 
-void testSubList() {
+void testBasicArrayList::testSubList() {
     std::cout<<"###Test SubList###"<<std::endl;
     BasicArrayList<int>a;
 
@@ -199,7 +165,7 @@ void testSubList() {
     std::cout<<std::endl;
 }
 
-void testClear() {
+void testBasicArrayList::testClear() {
     std::cout<<"###Test Clear###"<<std::endl;
     BasicArrayList<int>a;
 
@@ -212,7 +178,7 @@ void testClear() {
     std::cout<<std::endl;
 }
 
-void testAdd() {
+void testBasicArrayList::testAdd() {
     std::cout<<"###Test Add###"<<std::endl;
     BasicArrayList<int>a;
 
@@ -222,7 +188,7 @@ void testAdd() {
     std::cout<<std::endl;
 }
 
-void testAddAll() {
+void testBasicArrayList::testAddAll() {
     std::cout<<"###Test AddAll###"<<std::endl;
     BasicArrayList<int>a;
 
@@ -237,7 +203,7 @@ void testAddAll() {
     std::cout<<std::endl;
 }
 
-void testInsert() {
+void testBasicArrayList::testInsert() {
     std::cout<<"###Test Insert###"<<std::endl;
     BasicArrayList<int>a;
 
@@ -261,7 +227,7 @@ void testInsert() {
     std::cout<<std::endl;
 }
 
-void testErase() {
+void testBasicArrayList::testErase() {
     std::cout<<"###Test Erase###"<<std::endl;
     BasicArrayList<int>a;
 
@@ -274,7 +240,7 @@ void testErase() {
     std::cout<<std::endl;
 }
 
-void testRemove() {
+void testBasicArrayList::testRemove() {
     std::cout<<"###Test Remove###"<<std::endl;
     BasicArrayList<int>a;
 
@@ -287,7 +253,7 @@ void testRemove() {
     std::cout<<std::endl;
 }
 
-void testResize() {
+void testBasicArrayList::testResize() {
     std::cout<<"###Test ReSize###"<<std::endl;
     BasicArrayList<int>a;
 
@@ -300,7 +266,7 @@ void testResize() {
     std::cout<<std::endl;
 }
 
-void testOperator(){
+void testBasicArrayList::testOperator() {
     std::cout<<"###Test Operator###"<<std::endl;
     BasicArrayList<int>a;
 
@@ -313,7 +279,7 @@ void testOperator(){
     std::cout<<std::endl;
 }
 
-void testSort() {
+void testBasicArrayList::testSort() {
     std::cout<<"###Test Sort###"<<std::endl;
     BasicArrayList<int>a;
 

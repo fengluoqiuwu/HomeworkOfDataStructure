@@ -7,3 +7,7 @@ add_executable(EXPERIMENT_4
         test.cpp
         testStackAndList.cpp
 )
+
+target_include_directories(EXPERIMENT_4
+        PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../../../MyContainer/BasicContainer/BasicList
+)

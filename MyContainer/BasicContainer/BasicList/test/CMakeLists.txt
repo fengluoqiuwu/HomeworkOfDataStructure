@@ -4,7 +4,10 @@ project(BASIC_LIST_TEST C CXX)
 set(CMAKE_CXX_STANDARD 26)
 
 add_executable(BASIC_LIST_TEST
-        test_BasicArrayList.cpp
+        test.cpp
+        testBasicArrayList.cpp
+        testBasicLinkedList.cpp
+        ../BasicLinkedList.cpp
 )
 
 target_include_directories(BASIC_LIST_TEST
