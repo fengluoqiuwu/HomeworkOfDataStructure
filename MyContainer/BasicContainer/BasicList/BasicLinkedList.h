@@ -5,7 +5,10 @@
 #ifndef MY_CONTAINER_BASIC_LINKED_LIST_H
 #define MY_CONTAINER_BASIC_LINKED_LIST_H
 
+#include <string>
+#include <iostream>
 #include "LinkedListNode.h"
+#include "../AbstractClass/BasicError.h"
 
 //Read me before using it!!!
 //Typename T's = operator must be reloaded
@@ -20,8 +23,6 @@ public:
     //Constructor & Destructor
     BasicLinkedList();
 
-    [[maybe_unused]] explicit BasicLinkedList(unsigned long long inputSize);
-
     [[maybe_unused]] BasicLinkedList(const T *array, unsigned long long arraySize);
 
     [[maybe_unused]] BasicLinkedList(BasicLinkedList const &BasicLinkedList);
@@ -30,8 +31,6 @@ public:
 
     //Data Getter & Setter
     [[nodiscard]] unsigned long long getSize();
-
-    [[nodiscard]] unsigned long long getLength();
 
     //Main
     //Maintain
@@ -87,6 +86,21 @@ public:
 
 private:
     LinkedListNode<T> * head= nullptr;
+};
+
+class BasicLinkedListError : public BasicError {
+public:
+    BasicLinkedListError(std::string &msg, unsigned int code) : BasicError(msg) {
+        errorCode = code;
+        std::cerr<<msg<<std::endl;
+    }
+
+    [[nodiscard]] unsigned int getErrorCode() const {
+        return errorCode;
+    }
+
+private:
+    unsigned int errorCode;
 };
 
 
