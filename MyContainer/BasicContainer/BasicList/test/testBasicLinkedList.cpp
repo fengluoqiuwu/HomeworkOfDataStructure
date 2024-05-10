@@ -4,7 +4,7 @@
 
 #include <iostream>
 #include "testBasicLinkedList.h"
-#include "BasicLinkedList.h"
+#include "../BasicLinkedList.h"
 
 void testBasicLinkedList::test() {
     testConstructorAndDestructor();

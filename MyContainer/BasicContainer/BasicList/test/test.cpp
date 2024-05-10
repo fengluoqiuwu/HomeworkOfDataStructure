@@ -3,10 +3,13 @@
 //
 
 #include "testBasicArrayList.h"
+#include "testLinkedListNode.h"
 #include "testBasicLinkedList.h"
 
 int main(){
     testBasicArrayList::test();
+
+    testLinkedListNode::test();
     testBasicLinkedList::test();
     return 0;
 }

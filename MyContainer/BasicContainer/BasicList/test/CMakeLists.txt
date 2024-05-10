@@ -6,10 +6,7 @@ set(CMAKE_CXX_STANDARD 26)
 add_executable(BASIC_LIST_TEST
         test.cpp
         testBasicArrayList.cpp
+        testLinkedListNode.cpp
         testBasicLinkedList.cpp
         ../BasicLinkedList.cpp
-)
-
-target_include_directories(BASIC_LIST_TEST
-        PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/..
 )

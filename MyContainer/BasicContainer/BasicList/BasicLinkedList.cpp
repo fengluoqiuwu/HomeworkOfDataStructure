@@ -6,6 +6,8 @@
 
 template<typename T>
 BasicLinkedList<T> &BasicLinkedList<T>::operator=(const BasicLinkedList<T> &BasicLinkedList) {
+
+
     return *this;
 }
 

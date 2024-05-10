@@ -5,6 +5,8 @@
 #ifndef MY_CONTAINER_BASIC_LINKED_LIST_H
 #define MY_CONTAINER_BASIC_LINKED_LIST_H
 
+#include "LinkedListNode.h"
+
 //Read me before using it!!!
 //Typename T's = operator must be reloaded
 //Typename T's == operator should be reloaded if you want to use function find
@@ -82,6 +84,9 @@ public:
 
     void descendingSort();//Descending sorting,Please reload the > & < operator before using the function
     void descendingSort(unsigned long long beginIndex,unsigned long long endIndex);
+
+private:
+    LinkedListNode<T> * head= nullptr;
 };
 
 

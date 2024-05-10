@@ -4,7 +4,7 @@
 
 #include <iostream>
 #include "testBasicArrayList.h"
-#include "BasicArrayList.h"
+#include "../BasicArrayList.h"
 
 void testBasicArrayList::test() {
     testConstructorAndDestructor();
