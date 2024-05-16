@@ -23,10 +23,10 @@ void homework3_11();
 int main() {
     //testOfBasicStack();
     //testOfBasicQueue();
-    //homework3_7();
-    //homework3_8();
-    //homework3_9();
-    homework3_10();
+    homework3_7();
+    homework3_8();
+    homework3_9();
+    //homework3_10();
     //homework3_11();
     return 0;
 }
@@ -263,9 +263,11 @@ void homework3_9(){
     const std::string testString1="(2+4*5+6)/7*8";
     const std::string testString2="1+2+3+(4*(5+6*7))";
     const std::string testString3="(1*(2+3)-4)*2";
+    const std::string testString4="3+4*7";
     std::cout<<"String1:"<<evaluateRPN(infixToRPN(testString1))<<std::endl;
     std::cout<<"String2:"<<evaluateRPN(infixToRPN(testString2))<<std::endl;
     std::cout<<"String3:"<<evaluateRPN(infixToRPN(testString3))<<std::endl;
+    std::cout<<"String4:"<<evaluateRPN(infixToRPN(testString4))<<std::endl;
 }
 //homework3_10
 template <typename T>
