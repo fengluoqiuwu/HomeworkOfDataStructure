@@ -2,11 +2,10 @@
 // Created by 86133 on 2024/4/14.
 //
 
-#include "BasicArrayList.h"
-
 #ifndef DATA_STRUCTURE_POLYNOMIAL_ARRAY_H
 #define DATA_STRUCTURE_POLYNOMIAL_ARRAY_H
 
+#include "BasicArrayList.h"
 
 class Polynomial_Array {
 public:

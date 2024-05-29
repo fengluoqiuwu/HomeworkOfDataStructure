@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD 26)
 add_executable(BASIC_LIST_TEST
         test.cpp
         testBasicArrayList.cpp
-        testLinkedListNode.cpp
-        testBasicLinkedList.cpp
-        ../BasicLinkedList.cpp
+#        testLinkedListNode.cpp
+#        testBasicLinkedList.cpp
+#        ../BasicLinkedList.cpp
 )

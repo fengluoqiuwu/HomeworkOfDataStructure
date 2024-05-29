@@ -9,7 +9,7 @@
 #include <algorithm>
 #include <sstream>
 #include <iostream>
-#include "../AbstractClass/BasicError.h"
+#include "../Error/BasicError.h"
 
 const unsigned int LIST_INIT_SIZE = 100;
 
@@ -30,7 +30,7 @@ public:
 
     [[maybe_unused]] BasicArrayList(const T *array, unsigned long long arraySize);
 
-    [[maybe_unused]] BasicArrayList(BasicArrayList const &basicArrayList);
+    [[maybe_unused]] BasicArrayList(const BasicArrayList<T> &basicArrayList);
 
     ~BasicArrayList();
 
@@ -70,7 +70,7 @@ public:
 
     void insert(
             unsigned long long index,
-            const BasicArrayList &basicArrayList
+            const BasicArrayList<T> &basicArrayList
     );
 
      void insert(
@@ -175,7 +175,7 @@ template<typename T>
 }
 
 template<typename T>
-[[maybe_unused]] BasicArrayList<T>::BasicArrayList(const BasicArrayList &basicArrayList) {
+[[maybe_unused]] BasicArrayList<T>::BasicArrayList(const BasicArrayList<T> &basicArrayList) {
     size = basicArrayList.getSize();
     length = basicArrayList.getLength();
     bottom = new T[size];
@@ -342,7 +342,7 @@ void BasicArrayList<T>::insert(unsigned long long index, const T &t, unsigned lo
 }
 
 template<typename T>
-void BasicArrayList<T>::insert(unsigned long long index, const BasicArrayList &basicArrayList) {
+void BasicArrayList<T>::insert(unsigned long long index, const BasicArrayList<T> &basicArrayList) {
     insert(index, basicArrayList.getLength(), basicArrayList.getBottom());
 }
 
