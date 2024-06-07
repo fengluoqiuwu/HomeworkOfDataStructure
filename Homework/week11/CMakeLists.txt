@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.27)
 
-project(WEEK9 C CXX)
+project(WEEK11 C CXX)
 set(CMAKE_CXX_STANDARD 26)
 add_executable(WEEK11
         test.cpp
